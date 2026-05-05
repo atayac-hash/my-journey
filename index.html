@@ -293,6 +293,15 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 #page-notes-lecture .book-name{font-size:13px;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 #page-notes-lecture .mini-tag{font-size:10px;padding:2px 6px;border-radius:8px;flex-shrink:0;}
 #page-notes-lecture select.status-sel{font-size:11px;padding:2px 6px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);cursor:pointer;font-family:'DM Sans',sans-serif;}
+#page-notes-lecture .ln-edit-btn{background:none;border:none;color:var(--hint);font-size:11px;cursor:pointer;padding:2px 6px;border-radius:6px;float:right;font-family:'DM Sans',sans-serif;transition:color .15s;}
+#page-notes-lecture .ln-edit-btn:hover{color:var(--text);}
+#page-notes-lecture .tag-syn{background:var(--gray-bg);color:var(--muted);}
+#page-notes-lecture .ln-edit-lbl{font-size:10px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin:6px 0 3px;}
+#page-notes-lecture .ln-edit-area{width:100%;border:1px solid var(--border);border-radius:var(--rs);padding:6px 8px;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--text);background:var(--bg);resize:vertical;line-height:1.5;margin-bottom:4px;}
+#page-notes-lecture .ln-edit-area:focus{outline:none;border-color:var(--border-med);}
+#page-notes-lecture .ln-edit-sel{width:100%;border:1px solid var(--border);border-radius:var(--rs);padding:5px 8px;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--text);background:var(--bg);margin-bottom:4px;cursor:pointer;}
+#page-notes-lecture .ln-edit-row{display:flex;gap:6px;margin-top:8px;}
+#page-notes-lecture .ln-save-flash{font-size:11px;color:var(--teal-text);padding:3px 8px;}
 @media(max-width:700px){
   .sidebar{transform:translateX(-100%);transition:transform .2s;}
   .sidebar.open{transform:translateX(0);}
@@ -3354,7 +3363,32 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
           <div class="card">
             <div class="lbl">Semaine &amp; source</div>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px">
-              <input class="field" id="ln-f-sem" placeholder="Sem. du …" style="min-height:36px;resize:none">
+              <select class="field" id="ln-f-sem" style="min-height:36px;resize:none;cursor:pointer;">
+                <option value="">Semaine du…</option>
+                <option>Sem. 1 · 27 avr.</option>
+                <option>Sem. 2 · 4 mai</option>
+                <option>Sem. 3 · 11 mai</option>
+                <option>Sem. 4 · 18 mai</option>
+                <option>Sem. 5 · 25 mai</option>
+                <option>Sem. 6 · 1 juin</option>
+                <option>Sem. 7 · 8 juin</option>
+                <option>Sem. 8 · 15 juin</option>
+                <option>Sem. 9 · 22 juin</option>
+                <option>Sem. 10 · 29 juin</option>
+                <option>Sem. 11 · 6 juil.</option>
+                <option>Sem. 12 · 13 juil.</option>
+                <option>Sem. 13 · 20 juil.</option>
+                <option>Sem. 14 · 27 juil.</option>
+                <option>Sem. 15 · 3 août</option>
+                <option>Sem. 16 · 10 août</option>
+                <option>Sem. 17 · 17 août</option>
+                <option>Sem. 18 · 24 août</option>
+                <option>Sem. 19 · 31 août</option>
+                <option>Sem. 20 · 7 sept.</option>
+                <option>Sem. 21 · 14 sept.</option>
+                <option>Sem. 22 · 21 sept.</option>
+                <option>Sem. 23 · 28 sept.</option>
+              </select>
               <select class="field" id="ln-f-src">
                 <option value="">Choisir un livre…</option>
                 <optgroup label="Outil pro / IA">
@@ -3442,21 +3476,36 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
           <div class="card">
             <div class="lbl">Bilan mensuel — 5 min</div>
             <div style="margin-bottom:14px">
+              <div class="lbl">Mois</div>
+              <select class="field" id="ln-syn-mois" style="min-height:36px;resize:none;cursor:pointer;">
+                <option value="">Choisir un mois…</option>
+                <option>Mai 2026</option>
+                <option>Juin 2026</option>
+                <option>Juillet 2026</option>
+                <option>Août 2026</option>
+                <option>Septembre 2026</option>
+                <option>Octobre 2026</option>
+                <option>Novembre 2026</option>
+                <option>Décembre 2026</option>
+              </select>
+            </div>
+            <div style="margin-bottom:14px">
               <div class="lbl">Quel livre a le plus compté ce mois-ci ?</div>
-              <textarea class="field" placeholder="Et pourquoi en une phrase…" style="min-height:48px"></textarea>
+              <textarea class="field" id="ln-syn-livre" placeholder="Et pourquoi en une phrase…" style="min-height:48px"></textarea>
             </div>
             <div style="margin-bottom:14px">
               <div class="lbl">Quelle idée a changé un comportement ou une décision réelle ?</div>
-              <textarea class="field" placeholder="Exemple concret…" style="min-height:48px"></textarea>
+              <textarea class="field" id="ln-syn-idee" placeholder="Exemple concret…" style="min-height:48px"></textarea>
             </div>
             <div style="margin-bottom:14px">
               <div class="lbl">Quel axe m'a le moins nourri ?</div>
-              <textarea class="field" placeholder="Ajustement pour le mois suivant…" style="min-height:48px"></textarea>
+              <textarea class="field" id="ln-syn-axe" placeholder="Ajustement pour le mois suivant…" style="min-height:48px"></textarea>
             </div>
-            <div>
+            <div style="margin-bottom:14px">
               <div class="lbl">Un livre ou ressource à ajouter ?</div>
-              <textarea class="field" placeholder="Titre, recommandation, rencontre…" style="min-height:48px"></textarea>
+              <textarea class="field" id="ln-syn-ajout" placeholder="Titre, recommandation, rencontre…" style="min-height:48px"></textarea>
             </div>
+            <button class="ln-btn" onclick="saveSynthese()" style="background:var(--text);color:var(--bg);border-color:var(--text);">Enregistrer le bilan mensuel</button>
           </div>
         </div>
       </div>
@@ -4566,13 +4615,13 @@ function selTagLN(t) {
 }
 
 function saveLN() {
-  var sem  = document.getElementById('ln-f-sem').value.trim();
+  var sem  = document.getElementById('ln-f-sem').value;
   var src  = document.getElementById('ln-f-src').value;
   var idee = document.getElementById('ln-f-idee').value.trim();
   var lien = document.getElementById('ln-f-lien').value.trim();
   var act  = document.getElementById('ln-f-act').value.trim();
   if (!idee && !src) return;
-  lnEntries.unshift({sem:sem, src:src, cat:lnCurrentTag, idee:idee, lien:lien, act:act, date:new Date().toLocaleDateString('fr-FR')});
+  lnEntries.unshift({type:'hebdo', sem:sem, src:src, cat:lnCurrentTag, idee:idee, lien:lien, act:act, date:new Date().toLocaleDateString('fr-FR')});
   try { localStorage.setItem('rl_notes_v2', JSON.stringify(lnEntries)); } catch(e){}
   document.getElementById('ln-f-sem').value  = '';
   document.getElementById('ln-f-src').value  = '';
@@ -4583,16 +4632,123 @@ function saveLN() {
   showLN('journal');
 }
 
+function saveSynthese() {
+  var mois  = document.getElementById('ln-syn-mois').value;
+  var livre = document.getElementById('ln-syn-livre').value.trim();
+  var idee  = document.getElementById('ln-syn-idee').value.trim();
+  var axe   = document.getElementById('ln-syn-axe').value.trim();
+  var ajout = document.getElementById('ln-syn-ajout').value.trim();
+  if (!mois && !livre && !idee) return;
+  lnEntries.unshift({type:'synthese', mois:mois, livre:livre, idee_syn:idee, axe:axe, ajout:ajout, date:new Date().toLocaleDateString('fr-FR')});
+  try { localStorage.setItem('rl_notes_v2', JSON.stringify(lnEntries)); } catch(e){}
+  document.getElementById('ln-syn-mois').value  = '';
+  document.getElementById('ln-syn-livre').value = '';
+  document.getElementById('ln-syn-idee').value  = '';
+  document.getElementById('ln-syn-axe').value   = '';
+  document.getElementById('ln-syn-ajout').value = '';
+  document.getElementById('ln-cnt').textContent = lnEntries.length;
+  showLN('journal');
+}
+
+var lnEditingIdx = -1;
+
+function editEntryLN(i) {
+  lnEditingIdx = i;
+  renderJournalLN();
+}
+function cancelEditLN() {
+  lnEditingIdx = -1;
+  renderJournalLN();
+}
+function saveEditLN(i) {
+  var e = lnEntries[i];
+  if (e.type === 'synthese') {
+    e.mois     = document.getElementById('ln-ed-mois').value;
+    e.livre    = document.getElementById('ln-ed-livre').value.trim();
+    e.idee_syn = document.getElementById('ln-ed-idee').value.trim();
+    e.axe      = document.getElementById('ln-ed-axe').value.trim();
+    e.ajout    = document.getElementById('ln-ed-ajout').value.trim();
+  } else {
+    e.sem  = document.getElementById('ln-ed-sem').value;
+    e.src  = document.getElementById('ln-ed-src').value;
+    e.idee = document.getElementById('ln-ed-idee').value.trim();
+    e.lien = document.getElementById('ln-ed-lien').value.trim();
+    e.act  = document.getElementById('ln-ed-act').value.trim();
+  }
+  try { localStorage.setItem('rl_notes_v2', JSON.stringify(lnEntries)); } catch(e2){}
+  lnEditingIdx = -1;
+  renderJournalLN();
+}
+function deleteEntryLN(i) {
+  if (!confirm('Supprimer cette entrée ?')) return;
+  lnEntries.splice(i, 1);
+  try { localStorage.setItem('rl_notes_v2', JSON.stringify(lnEntries)); } catch(e){}
+  lnEditingIdx = -1;
+  renderJournalLN();
+}
+
+var LN_SEM_OPTS = ['Sem. 1 · 27 avr.','Sem. 2 · 4 mai','Sem. 3 · 11 mai','Sem. 4 · 18 mai','Sem. 5 · 25 mai','Sem. 6 · 1 juin','Sem. 7 · 8 juin','Sem. 8 · 15 juin','Sem. 9 · 22 juin','Sem. 10 · 29 juin','Sem. 11 · 6 juil.','Sem. 12 · 13 juil.','Sem. 13 · 20 juil.','Sem. 14 · 27 juil.','Sem. 15 · 3 août','Sem. 16 · 10 août','Sem. 17 · 17 août','Sem. 18 · 24 août','Sem. 19 · 31 août','Sem. 20 · 7 sept.','Sem. 21 · 14 sept.','Sem. 22 · 21 sept.','Sem. 23 · 28 sept.'];
+var LN_MOIS_OPTS = ['Mai 2026','Juin 2026','Juillet 2026','Août 2026','Septembre 2026','Octobre 2026','Novembre 2026','Décembre 2026'];
+
+function lnSemSel(cur) {
+  return '<select class="ln-edit-sel" id="ln-ed-sem"><option value="">Semaine…</option>' +
+    LN_SEM_OPTS.map(function(s){ return '<option' + (s===cur?' selected':'') + '>' + s + '</option>'; }).join('') + '</select>';
+}
+function lnMoisSel(cur) {
+  return '<select class="ln-edit-sel" id="ln-ed-mois"><option value="">Mois…</option>' +
+    LN_MOIS_OPTS.map(function(m){ return '<option' + (m===cur?' selected':'') + '>' + m + '</option>'; }).join('') + '</select>';
+}
+function lnSrcSel(cur) {
+  var page = document.getElementById('page-notes-lecture');
+  var srcEl = page.querySelector('#ln-f-src');
+  var opts = srcEl ? srcEl.innerHTML : '';
+  return '<select class="ln-edit-sel" id="ln-ed-src">' + opts.replace('value=""','value="" selected') + '</select>';
+}
+
 function renderJournalLN() {
   document.getElementById('ln-cnt').textContent = lnEntries.length;
   var el = document.getElementById('ln-journal-list');
   if (!lnEntries.length) { el.innerHTML = '<div class="empty">Aucune entrée pour l\'instant.</div>'; return; }
-  el.innerHTML = lnEntries.map(function(e) {
+  el.innerHTML = lnEntries.map(function(e, i) {
+    var editBtn = '<button class="ln-edit-btn" onclick="editEntryLN(' + i + ')">✎ modifier</button>';
+    if (i === lnEditingIdx) {
+      if (e.type === 'synthese') {
+        return '<div class="log-item">' +
+          '<div class="ln-edit-lbl">Mois</div>' + lnMoisSel(e.mois) +
+          '<div class="ln-edit-lbl">Livre qui a le plus compté</div><textarea class="ln-edit-area" id="ln-ed-livre" rows="2">' + (e.livre||'') + '</textarea>' +
+          '<div class="ln-edit-lbl">Idée qui a changé quelque chose</div><textarea class="ln-edit-area" id="ln-ed-idee" rows="2">' + (e.idee_syn||'') + '</textarea>' +
+          '<div class="ln-edit-lbl">Axe le moins nourri</div><textarea class="ln-edit-area" id="ln-ed-axe" rows="2">' + (e.axe||'') + '</textarea>' +
+          '<div class="ln-edit-lbl">Livre / ressource à ajouter</div><textarea class="ln-edit-area" id="ln-ed-ajout" rows="2">' + (e.ajout||'') + '</textarea>' +
+          '<div class="ln-edit-row"><button class="ln-btn" style="background:var(--text);color:var(--bg);border-color:var(--text)" onclick="saveEditLN(' + i + ')">Sauvegarder</button><button class="ln-btn" onclick="cancelEditLN()">Annuler</button><button class="ln-btn" style="color:var(--red-text);border-color:var(--red-text)" onclick="deleteEntryLN(' + i + ')">Supprimer</button></div>' +
+          '</div>';
+      }
+      return '<div class="log-item">' +
+        lnSemSel(e.sem) + lnSrcSel(e.src) +
+        '<div class="ln-edit-lbl">Idée principale</div><textarea class="ln-edit-area" id="ln-ed-idee" rows="2">' + (e.idee||'') + '</textarea>' +
+        '<div class="ln-edit-lbl">Lien avec ma situation</div><textarea class="ln-edit-area" id="ln-ed-lien" rows="2">' + (e.lien||'') + '</textarea>' +
+        '<div class="ln-edit-lbl">Action / question</div><textarea class="ln-edit-area" id="ln-ed-act" rows="2">' + (e.act||'') + '</textarea>' +
+        '<div class="ln-edit-row"><button class="ln-btn" style="background:var(--text);color:var(--bg);border-color:var(--text)" onclick="saveEditLN(' + i + ')">Sauvegarder</button><button class="ln-btn" onclick="cancelEditLN()">Annuler</button><button class="ln-btn" style="color:var(--red-text);border-color:var(--red-text)" onclick="deleteEntryLN(' + i + ')">Supprimer</button></div>' +
+        '</div>';
+    }
+    if (e.type === 'synthese') {
+      return '<div class="log-item">' +
+        editBtn +
+        '<span class="log-src">Bilan mensuel' + (e.mois ? ' — ' + e.mois : '') + '</span>' +
+        '<span class="tag mini-tag tag-syn" style="margin-left:6px">Synthèse</span>' +
+        '<span class="log-meta">' + e.date + '</span>' +
+        (e.livre    ? '<div class="log-idea"><strong>📖</strong> ' + e.livre + '</div>' : '') +
+        (e.idee_syn ? '<div class="log-idea">💡 ' + e.idee_syn + '</div>' : '') +
+        (e.axe      ? '<div class="log-action">↓ Axe faible : ' + e.axe + '</div>' : '') +
+        (e.ajout    ? '<div class="log-action">+ ' + e.ajout + '</div>' : '') +
+        '</div>';
+    }
     return '<div class="log-item">' +
+      editBtn +
       '<span class="log-src">' + (e.src || 'Sans titre') + '</span>' +
-      '<span class="tag mini-tag ' + LN_CAT_CLS[e.cat] + '" style="margin-left:6px">' + LN_CAT_LABELS[e.cat] + '</span>' +
+      '<span class="tag mini-tag ' + (LN_CAT_CLS[e.cat]||'tag-syn') + '" style="margin-left:6px">' + (LN_CAT_LABELS[e.cat]||'') + '</span>' +
       '<span class="log-meta">' + (e.sem ? e.sem + ' · ' : '') + e.date + '</span>' +
       (e.idee ? '<div class="log-idea">' + e.idee + '</div>' : '') +
+      (e.lien ? '<div class="log-action">↔ ' + e.lien + '</div>' : '') +
       (e.act  ? '<div class="log-action">→ ' + e.act + '</div>' : '') +
       '</div>';
   }).join('');
