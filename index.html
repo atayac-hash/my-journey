@@ -585,6 +585,120 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 @media(max-width:700px){
   .stretch-grid,.plants-grid,.stat-grid{ grid-template-columns:1fr; }
 }
+
+/* ── PAGE ACCUEIL / VUE D'ENSEMBLE ── */
+.intro-header{padding:28px 0 24px;border-bottom:1px solid var(--border-med);margin-bottom:24px;}
+.intro-eyebrow{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;}
+.intro-title{font-size:26px;font-weight:600;color:var(--text);line-height:1.2;margin-bottom:6px;}
+.intro-sub{font-size:13px;color:var(--muted);line-height:1.6;max-width:560px;}
+.intro-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
+.meta-chip{font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;border:1px solid var(--border-med);color:var(--muted);background:var(--surface);}
+.date-badge{font-size:11px;font-weight:500;color:var(--muted);background:var(--bg);border:1px solid var(--border);padding:3px 10px;border-radius:20px;font-family:'DM Mono',monospace;}
+.section-title{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin:24px 0 10px;display:flex;align-items:center;gap:8px;}
+.section-title::after{content:'';flex:1;height:1px;background:var(--border);}
+.obj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:8px 0;}
+.obj-card{border-radius:var(--rs);padding:12px 14px;border:1px solid var(--border);}
+.obj-horizon{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;}
+.obj-date{font-size:12px;font-weight:600;color:var(--text);margin-bottom:8px;}
+.obj-item{font-size:12px;color:var(--muted);line-height:1.5;padding:3px 0 3px 13px;position:relative;}
+.obj-item::before{content:"→";position:absolute;left:0;font-size:10px;color:var(--hint);}
+.piste-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:8px 0;}
+.piste-card{border-radius:var(--rs);padding:11px 13px;border:1px solid var(--border);}
+.piste-label{font-size:11px;font-weight:600;margin-bottom:4px;}
+.piste-desc{font-size:11px;color:var(--muted);line-height:1.5;}
+.piste-flag{font-size:10px;font-weight:600;padding:2px 7px;border-radius:3px;display:inline-block;margin-top:6px;}
+.prog-row{display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);align-items:flex-start;}
+.prog-row:last-child{border-bottom:none;}
+.prog-icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
+.prog-content{flex:1;}
+.prog-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;}
+.prog-detail{font-size:11px;color:var(--muted);line-height:1.5;}
+.contrainte{background:var(--red-bg);border:1px solid rgba(226,75,74,.2);border-radius:var(--rs);padding:10px 13px;margin:8px 0;}
+.contrainte-title{font-size:12px;font-weight:600;color:var(--red-text);margin-bottom:4px;}
+.contrainte-detail{font-size:12px;color:var(--red-text);line-height:1.55;}
+.contrainte-ok{font-size:11px;color:var(--green-text);background:var(--green-bg);padding:4px 9px;border-radius:4px;margin-top:6px;display:inline-block;}
+.comp-list{display:grid;gap:5px;margin:6px 0;}
+.comp-row{display:flex;justify-content:space-between;align-items:baseline;font-size:12px;padding:5px 0;border-bottom:1px solid var(--border);}
+.comp-row:last-child{border-bottom:none;}
+.comp-name{color:var(--text);font-weight:500;}
+.comp-detail{color:var(--muted);font-size:11px;text-align:right;}
+.page-footer{margin-top:28px;padding-top:16px;border-top:1px solid var(--border);font-size:11px;color:var(--hint);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;}
+@media(max-width:700px){
+  .obj-grid,.piste-grid{grid-template-columns:1fr;}
+}
+
+/* ── SALLE MODULE ── */
+#page-salle .sec-title{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:18px 0 8px;display:flex;align-items:center;gap:8px;}
+#page-salle .sec-title::after{content:'';flex:1;height:1px;background:var(--border);}
+#page-salle .info{background:var(--blue-bg);border-radius:var(--rs);padding:9px 11px;font-size:12px;color:var(--blue-text);margin:8px 0;line-height:1.55;}
+.salle-tabs-nav{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1.5rem;}
+.salle-tab-btn{padding:7px 15px;border-radius:var(--rs);border:1px solid var(--border-med);background:var(--surface);cursor:pointer;font-size:13px;font-weight:500;color:var(--muted);font-family:'DM Sans',sans-serif;transition:all .12s;}
+.salle-tab-btn:hover{background:var(--bg);color:var(--text);}
+.salle-tab-btn.active{background:var(--text);color:#fff;border-color:var(--text);}
+.salle-tab-panel{display:none;}.salle-tab-panel.active{display:block;}
+.selector-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:14px;}
+.day-sel{padding:10px 6px;border-radius:var(--rs);border:1.5px solid var(--border);background:var(--surface);cursor:pointer;text-align:center;transition:all .12s;font-family:'DM Sans',sans-serif;}
+.day-sel:hover{border-color:var(--border-med);background:var(--bg);}
+.day-sel.sel-active{border-color:var(--text);background:var(--text);}
+.day-sel.sel-active .ds-num,.day-sel.sel-active .ds-label,.day-sel.sel-active .ds-focus{color:#fff !important;opacity:1;}
+.ds-num{font-size:10px;font-weight:600;color:var(--hint);margin-bottom:2px;font-family:'DM Mono',monospace;}
+.ds-label{font-size:12px;font-weight:600;color:var(--text);}
+.ds-focus{font-size:10px;color:var(--muted);margin-top:2px;line-height:1.3;}
+.seance-badge{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:20px;font-size:13px;font-weight:600;margin-bottom:12px;}
+.badge-A{background:var(--blue-bg);color:var(--blue-text);}
+.badge-B{background:var(--amber-bg);color:var(--amber-text);}
+.badge-C{background:var(--green-bg);color:var(--green-text);}
+.chrono-bar{display:flex;height:30px;border-radius:6px;overflow:hidden;margin:10px 0;border:1px solid var(--border);}
+.chrono-seg{display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;padding:0 4px;overflow:hidden;white-space:nowrap;}
+.ex-list{display:flex;flex-direction:column;gap:8px;margin:10px 0;}
+.ex-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--rs);padding:12px 14px;}
+.ex-head{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:5px;}
+.ex-name{font-size:13px;font-weight:600;color:var(--text);}
+.ex-sets{font-size:11px;font-weight:600;color:var(--muted);font-family:'DM Mono',monospace;white-space:nowrap;padding-top:1px;}
+.ex-muscles{font-size:11px;color:var(--hint);margin-bottom:5px;}
+.ex-desc{font-size:12px;color:var(--muted);line-height:1.55;}
+.ex-coude{font-size:11px;color:var(--amber-text);background:var(--amber-bg);padding:4px 9px;border-radius:4px;margin-top:6px;display:block;}
+.ex-charge{font-size:11px;color:var(--blue-text);background:var(--blue-bg);padding:4px 9px;border-radius:4px;margin-top:4px;display:block;font-family:'DM Mono',monospace;}
+.ex-interdit{font-size:11px;color:var(--red-text);background:var(--red-bg);padding:4px 9px;border-radius:4px;margin-top:4px;display:block;}
+.tk-header{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:4px;padding:7px 12px;font-size:10px;font-weight:600;color:var(--hint);text-transform:uppercase;letter-spacing:.04em;background:var(--bg);border-bottom:1px solid var(--border);}
+.tk-row{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:4px;padding:8px 12px;border-bottom:1px solid var(--border);align-items:center;}
+.tk-row:last-child{border-bottom:none;}
+.tk-name{font-size:12px;font-weight:500;color:var(--text);line-height:1.3;}
+.tk-input{width:100%;border:1px solid var(--border);border-radius:4px;padding:4px 5px;font-size:11px;font-family:'DM Mono',monospace;background:var(--surface);color:var(--text);text-align:center;}
+.tk-input:focus{outline:none;border-color:var(--blue-mid);}
+.tk-best{font-size:10px;color:var(--green-text);font-weight:600;text-align:center;}
+.timer-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:20px;text-align:center;margin:12px 0;}
+.timer-display{font-size:48px;font-weight:600;font-family:'DM Mono',monospace;color:var(--text);line-height:1;margin:10px 0 14px;}
+.timer-label-top{font-size:12px;color:var(--muted);margin-bottom:10px;}
+.rest-presets{display:flex;gap:6px;justify-content:center;margin-bottom:14px;flex-wrap:wrap;}
+.rest-btn{padding:5px 13px;border-radius:20px;border:1px solid var(--border-med);background:var(--bg);font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;color:var(--muted);transition:all .12s;}
+.rest-btn:hover{background:var(--surface);color:var(--text);}
+.rest-btn.rb-active{background:var(--text);color:#fff;border-color:var(--text);}
+.timer-btns{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;}
+.tbtn{padding:8px 18px;border-radius:var(--rs);border:1px solid var(--border-med);background:var(--surface);font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;color:var(--text);transition:all .12s;}
+.tbtn:hover{background:var(--bg);}
+.tbtn.tbtn-primary{background:var(--text);color:#fff;border-color:var(--text);}
+.tbtn.tbtn-danger{background:var(--red-bg);color:var(--red-text);border-color:var(--red-mid);}
+.matrix{border:1px solid var(--border);border-radius:var(--rs);overflow:hidden;margin:8px 0;}
+.mx-head-row{display:grid;grid-template-columns:60px 1fr 1fr;background:var(--bg);border-bottom:1px solid var(--border);}
+.mx-cell{padding:8px 12px;font-size:12px;border-right:1px solid var(--border);}
+.mx-cell:last-child{border-right:none;}
+.mx-head-row .mx-cell{font-size:10px;font-weight:600;color:var(--hint);text-transform:uppercase;letter-spacing:.04em;}
+.mx-data-row{display:grid;grid-template-columns:60px 1fr 1fr;border-bottom:1px solid var(--border);}
+.mx-data-row:last-child{border-bottom:none;}
+.mx-data-row .mx-cell:first-child{font-weight:600;font-family:'DM Mono',monospace;background:var(--bg);}
+.mx-data-row .mx-cell:last-child{color:var(--muted);font-size:11px;}
+.btn-primary{padding:7px 16px;border-radius:var(--rs);border:none;background:var(--text);color:#fff;font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;}
+.btn-ghost{padding:7px 16px;border-radius:var(--rs);border:1px solid var(--border-med);background:var(--surface);color:var(--muted);font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;}
+.salle-save-ind{position:fixed;bottom:16px;right:16px;background:var(--green-mid);color:#fff;padding:7px 14px;border-radius:var(--rs);font-size:12px;font-weight:600;opacity:0;transition:opacity .3s;pointer-events:none;z-index:999;}
+.salle-save-ind.show{opacity:1;}
+@media(max-width:700px){
+  .selector-grid{grid-template-columns:repeat(5,1fr);}
+  .tk-header,.tk-row{grid-template-columns:2fr 1fr 1fr;}
+  .tk-header span:nth-child(n+4),.tk-row input:nth-child(n+4),.tk-row span:nth-child(n+4){display:none;}
+  .mx-head-row,.mx-data-row{grid-template-columns:50px 1fr;}
+  .mx-head-row .mx-cell:last-child,.mx-data-row .mx-cell:last-child{display:none;}
+}
 </style>
 </head>
 <body>
@@ -602,8 +716,14 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     </div>
 
     <div class="sidebar-section">
+      <button class="nav-item active" onclick="goTo('page-accueil')">
+        <span class="nav-icon">&#127968;</span>Accueil / Vue d'ensemble
+      </button>
+    </div>
+
+    <div class="sidebar-section">
       <div class="sidebar-section-label">Physique</div>
-      <button class="nav-item active" onclick="goTo('page-plan')">
+      <button class="nav-item" onclick="goTo('page-plan')">
         <span class="nav-icon">&#9654;</span>Plan définitif
       </button>
       <button class="nav-item" onclick="goTo('page-rotation')">
@@ -611,6 +731,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
       </button>
       <button class="nav-item" onclick="goTo('page-exercices')">
         <span class="nav-icon">&#9654;</span>Guide exercices
+      </button>
+      <button class="nav-item" onclick="goTo('page-salle')">
+        <span class="nav-icon">&#127947;</span>Entraînement salle
       </button>
     </div>
 
@@ -662,8 +785,171 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   <!-- MAIN -->
   <main class="main">
 
+    <!-- PAGE : ACCUEIL / VUE D'ENSEMBLE -->
+    <div id="page-accueil" class="page active">
+      <div class="wrap">
+
+        <div class="intro-header">
+          <div class="intro-eyebrow">My Journey · Vue d'ensemble</div>
+          <h1 class="intro-title">Arno Tayac</h1>
+          <p class="intro-sub">Page de référence — contextualise l'ensemble du programme et sert de mémoire active pour maintenir la cohérence des décisions.</p>
+          <div class="intro-meta">
+            <span class="meta-chip">49 ans · 50 ans déc. 2026</span>
+            <span class="meta-chip">175 cm · 75 kg</span>
+            <span class="meta-chip">Suresnes</span>
+            <span class="meta-chip">EDHEC</span>
+            <span class="date-badge" id="accueil-live-date">6 mai 2026</span>
+          </div>
+        </div>
+
+        <div class="section-title">Identité &amp; situation</div>
+
+        <div class="card">
+          <div class="ch"><span class="ct">Profil</span><span class="tag ti">Transition active</span></div>
+          <div class="cb">
+            <div class="g2">
+              <div>
+                <div class="row"><span class="rt">Parcours</span><span class="rc">25+ ans en tech — UnaBiz/Sigfox, Easynet, Ikoula. Dernier rôle : General Manager.</span></div>
+                <div class="row"><span class="rt">Sortie</span><span class="rc">Poste GM quitté mi-avril 2026. 3 semaines de recul au 6 mai 2026.</span></div>
+                <div class="row"><span class="rt">Formation</span><span class="rc">EDHEC. Profil <em>"project-first"</em> — énergisé par la transformation et l'exécution, pas l'idéation seule.</span></div>
+              </div>
+              <div>
+                <div class="row"><span class="rt">Sport ant.</span><span class="rc">Gymnastique enfance (8 ans) · Handball ado (4 ans) · Boxe ~42 ans (3 ans)</span></div>
+                <div class="row"><span class="rt">Reprise</span><span class="rc">Activité physique structurée depuis début 2026. Padel démarré en loisirs.</span></div>
+                <div class="row"><span class="rt">État</span><span class="rc">Soulagement et anxiété simultanés. Écart entre perception de soi (entrepreneur/créateur) et perception marché (cadre tech/IoT).</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="ch"><span class="ct">Contrainte physique active</span><span class="tag td">À surveiller</span></div>
+          <div class="cb">
+            <div class="contrainte">
+              <div class="contrainte-title">⚡ Épicondylite latérale — coude droit</div>
+              <div class="contrainte-detail">Récurrente depuis 3 ans. Réapparaît dès qu'un mouvement de type curl ou traction en pronation est effectué sans précaution. Traitement actif : wrist extension excentrique 3×15 quotidien · strap épicondylien pendant l'effort · collagène + vitamine C pré-exercice.</div>
+              <span class="contrainte-ok">✓ Plus de sensation d'inflammation globale depuis avril 2026</span>
+            </div>
+            <div class="g3" style="margin-top:10px;">
+              <div class="stat"><div class="sl">À éviter absolument</div><div class="sv" style="font-size:11px;font-weight:500;color:var(--red-text);">Curl barre droite · Wrist curl · Rameur · Supination forcée lestée</div></div>
+              <div class="stat"><div class="sl">Avec précaution</div><div class="sv" style="font-size:11px;font-weight:500;color:var(--amber-text);">Cable row (grip neutre) · Développé épaules (amplitude réduite) · Padel (grip détendu)</div></div>
+              <div class="stat"><div class="sl">Sans contrainte</div><div class="sv" style="font-size:11px;font-weight:500;color:var(--green-text);">Tous exercices jambes · Face pull · Lat pulldown grip neutre · Cardio vélo/elliptique</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-title">Objectifs physiques</div>
+
+        <div class="obj-grid">
+          <div class="obj-card" style="background:var(--blue-bg);border-color:rgba(55,138,221,.2);">
+            <div class="obj-horizon" style="color:var(--blue-mid);">Court terme</div>
+            <div class="obj-date">Août 2026 · 3 mois</div>
+            <div class="obj-item" style="color:var(--blue-text);">Routine matinale 5j automatisée</div>
+            <div class="obj-item" style="color:var(--blue-text);">Épicondylite asymptomatique à l'effort</div>
+            <div class="obj-item" style="color:var(--blue-text);">Mobilité générale améliorée (base de progression)</div>
+          </div>
+          <div class="obj-card" style="background:var(--amber-bg);border-color:rgba(186,117,23,.2);">
+            <div class="obj-horizon" style="color:var(--amber-mid);">Moyen terme</div>
+            <div class="obj-date">Nov. 2026 · 6 mois · cap 50 ans</div>
+            <div class="obj-item" style="color:var(--amber-text);">Meilleure condition qu'à 45 ans</div>
+            <div class="obj-item" style="color:var(--amber-text);">Grand écart facial complet</div>
+            <div class="obj-item" style="color:var(--amber-text);">Grand écart latéral 70-80%</div>
+            <div class="obj-item" style="color:var(--amber-text);">Force fonctionnelle mesurable</div>
+            <div class="obj-item" style="color:var(--amber-text);">Padel réintégré sans contrainte</div>
+          </div>
+          <div class="obj-card" style="background:var(--green-bg);border-color:rgba(99,153,34,.2);">
+            <div class="obj-horizon" style="color:var(--green-mid);">Long terme</div>
+            <div class="obj-date">12–18 mois</div>
+            <div class="obj-item" style="color:var(--green-text);">Programme de maintien autonome</div>
+            <div class="obj-item" style="color:var(--green-text);">Mobilité latérale avancée</div>
+            <div class="obj-item" style="color:var(--green-text);">Retour boxe ou sport de combat</div>
+          </div>
+        </div>
+
+        <div class="section-title">Protocoles actifs</div>
+
+        <div class="card">
+          <div class="ch"><span class="ct">Nutrition · eTRF 7h–16h</span><span class="tag ts">En apprentissage</span></div>
+          <div class="cb">
+            <div class="g3">
+              <div class="stat"><div class="sl">Protéines</div><div class="sv">140–165 g/j</div></div>
+              <div class="stat"><div class="sl">Glucides</div><div class="sv">200–280 g/j</div></div>
+              <div class="stat"><div class="sl">Lipides</div><div class="sv">65–80 g/j</div></div>
+            </div>
+            <div class="caut" style="margin-top:8px;">Gestion encore en apprentissage — tendance à mal calibrer les quantités pendant la fenêtre. Sensation de gonflement résiduelle non inflammatoire.</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="ch"><span class="ct">Compléments</span></div>
+          <div class="cb">
+            <div class="comp-list">
+              <div class="comp-row"><span class="comp-name">Collagène Peptan + Vitamine C</span><span class="comp-detail">15g + 50mg · 5h30 · pré-exercice</span></div>
+              <div class="comp-row"><span class="comp-name">Magnésium glycinate</span><span class="comp-detail">300–400mg · soir · qualité N3</span></div>
+              <div class="comp-row"><span class="comp-name">Vitamine D3+K2</span><span class="comp-detail">3000 UI · hiver/printemps</span></div>
+              <div class="comp-row"><span class="comp-name">Créatine Creapure</span><span class="comp-detail">5g/j · force + récupération</span></div>
+              <div class="comp-row"><span class="comp-name">Oméga-3</span><span class="comp-detail">Via alimentation · sardines/maquereaux 2–3×/sem</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="ch"><span class="ct">Sommeil</span></div>
+          <div class="cb">
+            <div class="g3">
+              <div class="stat"><div class="sl">Coucher</div><div class="sv">22h</div></div>
+              <div class="stat"><div class="sl">Lever</div><div class="sv">5h30</div></div>
+              <div class="stat"><div class="sl">Fenêtre</div><div class="sv">7h30</div></div>
+            </div>
+            <div class="row" style="margin-top:6px;"><span class="rt">Endormissement</span><span class="rc">Pas de problème. Pas de protocole d'induction nécessaire.</span></div>
+            <div class="row"><span class="rt" style="color:var(--amber-mid);">Réveil 2–3h</span><span class="rc">Occasionnel sous tension. Passé de plusieurs fois/semaine à ~1 fois/semaine. Protocole : cohérence cardiaque 5-5 allongé → lecture si éveillé +20 min.</span></div>
+          </div>
+        </div>
+
+        <div class="section-title">Structure du programme</div>
+
+        <div class="card">
+          <div class="ch"><span class="ct">Vue d'ensemble — modules actifs</span></div>
+          <div class="cb">
+            <div class="prog-row"><div class="prog-icon" style="background:var(--blue-bg);">💪</div><div class="prog-content"><div class="prog-title">Routine matinale · 5j/7 · 5h35–6h05</div><div class="prog-detail">Étirements 15 min (séquence fixe) + workout 20 min · Rotation J1 Push / J2 Hinge+Pull / J3 Mobilité / J4 Squat+Core / J5 Full body · Mode activation les jours de salle (2 séries, 60–70%)</div></div></div>
+            <div class="prog-row"><div class="prog-icon" style="background:var(--amber-bg);">🏋️</div><div class="prog-content"><div class="prog-title">Salle · 2–3×/semaine · midi ou après-midi</div><div class="prog-detail">Jours variables. Séance A (traction + épaules) · Séance B (lower body + chaîne post.) · Séance C (cardio vélo/elliptique + circuit) · Matrice de décision selon rotation matinale du jour</div></div></div>
+            <div class="prog-row"><div class="prog-icon" style="background:var(--teal-bg);">🫁</div><div class="prog-content"><div class="prog-title">Breathwork · Protocole A et B</div><div class="prog-detail">A (cohérence cardiaque 5 min + méditation 15 min) jours normaux · B (Wim Hof 8–10 min + méditation corps-scan 10 min) jours de salle · Plan de progression 8 semaines</div></div></div>
+            <div class="prog-row"><div class="prog-icon" style="background:var(--purple-bg);">🌙</div><div class="prog-content"><div class="prog-title">Routine du soir · 21h–22h</div><div class="prog-detail">Infusion camomille + mélisse · Magnésium · Brain dump 5 min sur papier · Étirements passifs au lit · Respiration 4-7-8 (4 cycles)</div></div></div>
+          </div>
+        </div>
+
+        <div class="section-title">Transition professionnelle</div>
+
+        <div class="card">
+          <div class="ch"><span class="ct">Situation au 6 mai 2026</span><span class="tag tp">3 semaines post-sortie</span></div>
+          <div class="cb">
+            <div class="piste-grid">
+              <div class="piste-card" style="background:var(--amber-bg);border-color:rgba(186,117,23,.2);"><div class="piste-label" style="color:var(--amber-text);">Poste salarié</div><div class="piste-desc" style="color:var(--amber-text);">Recherche en parallèle. Contrainte financière et pression probable à court terme.</div><span class="piste-flag" style="background:var(--amber-text);color:#fff;">Contrainte CT</span></div>
+              <div class="piste-card" style="background:var(--blue-bg);border-color:rgba(55,138,221,.2);"><div class="piste-label" style="color:var(--blue-text);">Reprise PME</div><div class="piste-desc" style="color:var(--blue-text);">CA 1–5M€. Piste la plus alignée avec les valeurs et l'énergie.</div><span class="piste-flag" style="background:var(--blue-text);color:#fff;">Priorité valeurs</span></div>
+              <div class="piste-card" style="background:var(--gray-bg);border-color:var(--border-med);"><div class="piste-label" style="color:var(--gray-text);">Consulting</div><div class="piste-desc" style="color:var(--gray-text);">Option intermédiaire. Génère du revenu tout en maintenant la liberté d'explorer.</div><span class="piste-flag" style="background:var(--gray-mid);color:#fff;">Option pont</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="ch"><span class="ct">Outils &amp; posture</span></div>
+          <div class="cb">
+            <div class="row"><span class="rt">Posture</span><span class="rc">Ouvert à laisser émerger la direction. Principe Ibarra (outsight) : agir d'abord, clarifier ensuite. Pas d'introspection avant l'action.</span></div>
+            <div class="row"><span class="rt">Outils</span><span class="rc">Journal de transition (questions par phase) · Tracker preuves d'identité · Cartographie de l'écart perception de soi / marché</span></div>
+            <div class="row"><span class="rt">Références</span><span class="rc">Ibarra (Act Like a Leader) · Blake (Pivot) · Burkeman (Four Thousand Weeks) · Duke (Thinking in Bets)</span></div>
+          </div>
+        </div>
+
+        <div class="page-footer">
+          <span>My Journey · Arno Tayac · Mai 2026</span>
+          <span>Cette page est la référence de cohérence — à mettre à jour à chaque évolution majeure</span>
+        </div>
+
+      </div>
+    </div>
+
     <!-- PAGE : PLAN DÉFINITIF -->
-    <div id="page-plan" class="page active">
+    <div id="page-plan" class="page">
       <div class="page-header">
         <h1 class="page-title">Plan définitif complet</h1>
         <p class="page-sub">Rotation 5 jours · Routine matinale fixe · Salle bonus variable · eTRF 7h–16h · Tennis elbow · Progression 8 semaines</p>
@@ -2698,6 +2984,184 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   </div><!-- end ven -->
     </div>
 
+    <!-- PAGE : SALLE -->
+    <div id="page-salle" class="page">
+      <div class="page-header">
+        <h1 class="page-title">Entraînement salle</h1>
+        <p class="page-sub">2–3×/semaine · midi ou après-midi · jours variables. Sélectionne ton jour de rotation matinale — le module affiche la séance adaptée et suit ta progression.</p>
+      </div>
+
+      <div class="salle-tabs-nav">
+        <button class="salle-tab-btn active" onclick="salleShowTab('salle-tab-seance',this)">Séance du jour</button>
+        <button class="salle-tab-btn" onclick="salleShowTab('salle-tab-tracker',this)">Progression</button>
+        <button class="salle-tab-btn" onclick="salleShowTab('salle-tab-timer',this)">Timer repos</button>
+        <button class="salle-tab-btn" onclick="salleShowTab('salle-tab-ref',this)">Références</button>
+      </div>
+
+      <div id="salle-tab-seance" class="salle-tab-panel active">
+        <div class="card">
+          <div class="ch"><span class="ct">Quelle est ta rotation matinale aujourd'hui ?</span></div>
+          <div class="cb">
+            <div class="selector-grid">
+              <div class="day-sel" onclick="salleSelectDay(this,'J1')">
+                <div class="ds-num">J1</div><div class="ds-label">Push</div><div class="ds-focus">Pecto · Épaules · Triceps</div>
+              </div>
+              <div class="day-sel" onclick="salleSelectDay(this,'J2')">
+                <div class="ds-num">J2</div><div class="ds-label">Hinge+Pull</div><div class="ds-focus">Ischios · Fessiers · Dos</div>
+              </div>
+              <div class="day-sel" onclick="salleSelectDay(this,'J3')">
+                <div class="ds-num">J3</div><div class="ds-label">Mobilité</div><div class="ds-focus">Arrivée fraîche</div>
+              </div>
+              <div class="day-sel" onclick="salleSelectDay(this,'J4')">
+                <div class="ds-num">J4</div><div class="ds-label">Squat+Core</div><div class="ds-focus">Quadriceps · Core</div>
+              </div>
+              <div class="day-sel" onclick="salleSelectDay(this,'J5')">
+                <div class="ds-num">J5</div><div class="ds-label">Full body</div><div class="ds-focus">Fin de cycle</div>
+              </div>
+            </div>
+            <div id="salle-seance-result" style="display:none">
+              <div id="salle-seance-badge-wrap"></div>
+              <div id="salle-seance-rationale" class="info" style="margin-top:0;"></div>
+            </div>
+          </div>
+        </div>
+        <div id="salle-seance-content" style="display:none">
+          <div class="sec-title">Chronomètre · 60 min</div>
+          <div class="card"><div class="cb">
+            <div class="chrono-bar" id="salle-chrono-bar"></div>
+            <div id="salle-chrono-rows"></div>
+          </div></div>
+          <div class="sec-title">Exercices</div>
+          <div id="salle-exercices-content"></div>
+        </div>
+      </div>
+
+      <div id="salle-tab-tracker" class="salle-tab-panel">
+        <div class="card">
+          <div class="ch">
+            <span class="ct">Suivi de progression</span>
+            <span class="tag ti">Format : charge×reps (ex: 35×12) ou reps seules</span>
+          </div>
+          <div class="cb" style="padding:0">
+            <div class="tk-header">
+              <span>Exercice</span><span>Séance 1</span><span>Séance 2</span><span>Séance 3</span><span>Record</span>
+            </div>
+            <div id="salle-tk-rows"></div>
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn-primary" onclick="salleSaveTracker()">Sauvegarder</button>
+          <button class="btn-ghost" onclick="salleClearTracker()">Effacer tout</button>
+        </div>
+        <div class="info" style="margin-top:10px;">La progression est documentée séance après séance. Même +1 rép ou +2,5 kg est un progrès réel. Le tracker ne ment pas.</div>
+      </div>
+
+      <div id="salle-tab-timer" class="salle-tab-panel">
+        <div class="timer-wrap">
+          <div class="timer-label-top">Temps de repos entre séries</div>
+          <div class="rest-presets">
+            <button class="rest-btn" onclick="salleSetRest(45,this)">45s</button>
+            <button class="rest-btn rb-active" onclick="salleSetRest(60,this)">60s</button>
+            <button class="rest-btn" onclick="salleSetRest(75,this)">75s</button>
+            <button class="rest-btn" onclick="salleSetRest(90,this)">90s</button>
+            <button class="rest-btn" onclick="salleSetRest(120,this)">2 min</button>
+          </div>
+          <div class="timer-display" id="salle-timer-display">01:00</div>
+          <div class="timer-btns">
+            <button class="tbtn tbtn-primary" id="salle-btn-start" onclick="salleStartTimer()">Démarrer</button>
+            <button class="tbtn" id="salle-btn-pause" onclick="sallePauseTimer()" style="display:none">Pause</button>
+            <button class="tbtn tbtn-danger" id="salle-btn-reset" onclick="salleResetTimer()" style="display:none">Reset</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="ch"><span class="ct">Temps de repos recommandés</span></div>
+          <div class="cb">
+            <div class="row"><span class="rt">45–60s</span><span class="rc">Élévations latérales · Face pull · Exercices légers isolation</span></div>
+            <div class="row"><span class="rt">60–75s</span><span class="rc">Lat pulldown · Rowing câble · Leg curl · Développé épaules · Pompes surélevées</span></div>
+            <div class="row"><span class="rt">90s</span><span class="rc">Presse à jambes · Hip thrust · Fentes haltères · Goblet squat kettlebell</span></div>
+            <div class="row"><span class="rt">60–75s</span><span class="rc">Finisher core (planche · dead bug · Pallof press) entre tours</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="salle-tab-ref" class="salle-tab-panel">
+        <div class="card">
+          <div class="ch"><span class="ct">Matrice de décision — rotation matinale → séance</span></div>
+          <div class="cb" style="padding:0">
+            <div class="matrix">
+              <div class="mx-head-row">
+                <div class="mx-cell">J.</div>
+                <div class="mx-cell">Séance recommandée</div>
+                <div class="mx-cell">Logique</div>
+              </div>
+              <div class="mx-data-row">
+                <div class="mx-cell">J1</div>
+                <div class="mx-cell"><span class="tag ti">Séance A</span> Traction + Épaules</div>
+                <div class="mx-cell">Pectoraux déjà sollicités → upper body opposé</div>
+              </div>
+              <div class="mx-data-row">
+                <div class="mx-cell">J2</div>
+                <div class="mx-cell"><span class="tag tw">Séance B</span> Lower body + Chaîne post.</div>
+                <div class="mx-cell">Ischios/fessiers légers le matin → lower body lourd en salle</div>
+              </div>
+              <div class="mx-data-row">
+                <div class="mx-cell">J3</div>
+                <div class="mx-cell"><span class="tag ti">A</span> ou <span class="tag ts" style="margin-left:3px">C</span> selon envie</div>
+                <div class="mx-cell">Arrivée fraîche → meilleure performance · choix libre</div>
+              </div>
+              <div class="mx-data-row">
+                <div class="mx-cell">J4</div>
+                <div class="mx-cell"><span class="tag ti">Séance A</span> Traction + Épaules</div>
+                <div class="mx-cell">Quadriceps déjà sollicités → upper body en salle</div>
+              </div>
+              <div class="mx-data-row">
+                <div class="mx-cell">J5</div>
+                <div class="mx-cell"><span class="tag ts">Séance C</span> Cardio + Circuit</div>
+                <div class="mx-cell">Fin de cycle → pas de séance lourde</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="ch"><span class="ct">Flexibilité de la rotation</span></div>
+          <div class="cb">
+            <p style="font-size:13px;color:var(--text);line-height:1.6;margin-bottom:8px;">L'ordre J1→J5 n'est pas rigide calendairement. Si tu vas en salle le même jour plusieurs semaines de suite, tu peux inverser deux jours de rotation matinale pour varier les séances.</p>
+            <div class="ok">Règle de sécurité : ne jamais solliciter le même groupe musculaire à haute intensité deux jours consécutifs.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="ch"><span class="ct">Épicondylite — adaptations salle</span><span class="tag td">Coude droit</span></div>
+          <div class="cb">
+            <div class="g2">
+              <div>
+                <div style="font-size:11px;font-weight:600;color:var(--red-text);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px;">À éviter absolument</div>
+                <div style="font-size:12px;color:var(--red-text);line-height:1.8;">Rameur (toutes intensités)<br>Curl biceps barre droite<br>Wrist curl / extension lestée<br>Triceps barre droite<br>Supination forcée lestée</div>
+              </div>
+              <div>
+                <div style="font-size:11px;font-weight:600;color:var(--amber-text);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px;">Avec précaution</div>
+                <div style="font-size:12px;color:var(--amber-text);line-height:1.8;">Cable row → grip neutre uniquement<br>Lat pulldown → grip large ou neutre<br>Dév. épaules → amplitude 80%<br>Goblet squat → surveiller grip</div>
+              </div>
+            </div>
+            <div class="ok" style="margin-top:10px;">Strap épicondylien 2–3 cm sous le coude avant toute séance. Grip détendu sur toutes les prises.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="ch"><span class="ct">Charges de départ et progression</span></div>
+          <div class="cb" style="padding:0">
+            <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;border-bottom:1px solid var(--border);background:var(--bg);">
+              <div style="padding:7px 12px;font-size:10px;font-weight:600;color:var(--hint);text-transform:uppercase;">Exercice</div>
+              <div style="padding:7px 12px;font-size:10px;font-weight:600;color:var(--hint);text-transform:uppercase;">Départ</div>
+              <div style="padding:7px 12px;font-size:10px;font-weight:600;color:var(--hint);text-transform:uppercase;">Progression</div>
+              <div style="padding:7px 12px;font-size:10px;font-weight:600;color:var(--hint);text-transform:uppercase;">Critère</div>
+            </div>
+            <div id="salle-charges-table"></div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end page-salle -->
+    <div class="salle-save-ind" id="salle-save-ind">Sauvegardé ✓</div>
+
     <!-- PAGE : NUTRITION -->
     <div id="page-nutrition" class="page">
       <div class="page-header">
@@ -3122,19 +3586,19 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
         <div class="lc-wr">
           <div class="lc-wl">Sem. 2<br>4 mai</div>
           <div class="lc-p lc-pro"><div class="lc-pt">Co-Intelligence</div><div class="lc-ps">Chap. 4–6 · McKinsey</div></div>
-          <div class="lc-p lc-per"><div class="lc-pt">Atomic Habits</div><div class="lc-ps">Chap. 4–6</div></div>
+          <div class="lc-p lc-per"><div class="lc-pt">Atomic Habits</div><div class="lc-ps">Fin · terminé en avance ✓</div></div>
           <div class="lc-p lc-rom"><div class="lc-pt">Vivez 100 ans grâce à votre microbiote</div><div class="lc-ps">Dr William Berrebi</div></div>
         </div>
         <div class="lc-wr">
           <div class="lc-wl">Sem. 3<br>11 mai</div>
           <div class="lc-p lc-pro"><div class="lc-pt">Co-Intelligence</div><div class="lc-ps">Chap. 7–fin · Signal</div></div>
-          <div class="lc-p lc-per"><div class="lc-pt">Atomic Habits</div><div class="lc-ps">Chap. 7–9</div></div>
+          <div class="lc-p lc-per"><div class="lc-pt">Le Corps n'oublie rien</div><div class="lc-ps">Bessel van der Kolk · Partie I</div></div>
           <div class="lc-ep">libre</div>
         </div>
         <div class="lc-wr">
           <div class="lc-wl">Sem. 4<br>18 mai</div>
           <div class="lc-p lc-geo"><div class="lc-pt">The World for Sale</div><div class="lc-ps">Chap. 1–3 · IRIS</div></div>
-          <div class="lc-p lc-per"><div class="lc-pt">Atomic Habits</div><div class="lc-ps">Fin + bilan</div></div>
+          <div class="lc-p lc-per"><div class="lc-pt">Le Corps n'oublie rien</div><div class="lc-ps">Bessel van der Kolk · Partie II — Fin</div></div>
           <div class="lc-ep">libre</div>
         </div>
         <div class="lc-wr">
@@ -3406,6 +3870,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
                 </optgroup>
                 <optgroup label="Évolution perso">
                   <option>Atomic Habits</option>
+                  <option>Le Corps n'oublie rien — van der Kolk</option>
                   <option>Cessez d'être gentil, soyez vrai</option>
                   <option>Thinking Fast and Slow</option>
                   <option>Noise — Kahneman</option>
@@ -4566,6 +5031,7 @@ function closeSidebar() {
 var LN_BOOKS = [
   {name:'Co-Intelligence',cat:'pro',sem:1},
   {name:'Atomic Habits',cat:'per',sem:1},
+  {name:"Le Corps n'oublie rien — van der Kolk",cat:'per',sem:3},
   {name:'The World for Sale',cat:'geo',sem:4},
   {name:"Cessez d'être gentil",cat:'per',sem:5},
   {name:'Chip War',cat:'geo',sem:7},
@@ -5163,6 +5629,15 @@ function rsRestoreAll() {
 document.addEventListener('DOMContentLoaded', rsRestoreAll);
 
 // ── INIT: activate first tab in each page ──
+// ── DATE LIVE ACCUEIL ──
+document.addEventListener('DOMContentLoaded', () => {
+  const el = document.getElementById('accueil-live-date');
+  if (el) {
+    const opts = { day:'numeric', month:'long', year:'numeric' };
+    el.textContent = new Date().toLocaleDateString('fr-FR', opts);
+  }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.page').forEach(page => {
     // activate first .sec
@@ -5176,7 +5651,351 @@ document.addEventListener('DOMContentLoaded', () => {
     const firstBtn = page.querySelector('.nav-btn');
     if (firstBtn) firstBtn.classList.add('active');
   });
+  document.getElementById('salle-timer-display').textContent=salleFmt(salleTimerTotal);
+  salleRenderCharges();
 });
+
+// ═══════════════════ SALLE MODULE ═══════════════════════════
+
+const SALLE_KEY = 'salle_mj_v1';
+function salleLoadData(){ try{ return JSON.parse(localStorage.getItem(SALLE_KEY))||{}; }catch(e){ return {}; } }
+function salleSaveData(d){ try{ localStorage.setItem(SALLE_KEY,JSON.stringify(d)); salleShowSaved(); }catch(e){} }
+function salleShowSaved(){
+  const el=document.getElementById('salle-save-ind');
+  if(!el) return;
+  el.classList.add('show');
+  setTimeout(()=>el.classList.remove('show'),1800);
+}
+
+function salleShowTab(id,btn){
+  document.querySelectorAll('.salle-tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.salle-tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  if(id==='salle-tab-tracker') salleRenderTracker();
+  if(id==='salle-tab-ref') salleRenderCharges();
+}
+
+const SALLE_SEANCES_MAP = {
+  J1:{ type:'A', label:'Séance A — Traction + Épaules', rationale:'Rotation J1 Push ce matin (pectoraux, deltoïdes, triceps sollicités). En salle : upper body opposé — traction verticale et épaules. Pas de conflit musculaire.' },
+  J2:{ type:'B', label:'Séance B — Lower body + Chaîne postérieure', rationale:'Rotation J2 Hinge+Pull ce matin (ischios et fessiers légers). En salle : lower body lourd — presse, fentes, leg curl, hip thrust. Complémentaire au matin.' },
+  J3:{ type:'AC', label:'Séance A ou C — tu arrives frais, ton choix', rationale:'Rotation J3 Mobilité ce matin (aucun groupe musculaire fatigué). Meilleure fenêtre de performance de la semaine. Séance A si renforcement, Séance C si cardio-circuit.' },
+  J4:{ type:'A', label:'Séance A — Traction + Épaules', rationale:'Rotation J4 Squat+Core ce matin (quadriceps et core sollicités). En salle : upper body — traction, épaules. Pas de chevauchement musculaire.' },
+  J5:{ type:'C', label:'Séance C — Cardio + Circuit fonctionnel', rationale:'Rotation J5 Full body ce matin. Fin de cycle, fatigue accumulée. Pas de séance lourde — cardio structuré + circuit fonctionnel léger uniquement.' },
+};
+
+const SALLE_A = {
+  chrono:[
+    {label:'Échauffement',min:8,bg:'#e8f1fb',fg:'#0c4478'},
+    {label:'Bloc 1 · Traction',min:12,bg:'#378add',fg:'#fff'},
+    {label:'Bloc 2 · Épaules',min:23,bg:'#7f77dd',fg:'#fff'},
+    {label:'Core 3 tours',min:9,bg:'#1d9e75',fg:'#fff'},
+    {label:'Étirements',min:8,bg:'#e1f5ee',fg:'#085041'},
+  ],
+  blocs:[
+    { titre:'Échauffement · 8 min', exs:[
+      {name:'Vélo doux',sets:'3 min',muscles:'Activation cardiovasculaire progressive',desc:'Intensité 3/10. Objectif : monter la température corporelle et lubrifier les articulations.',charge:'',coude:''},
+      {name:'Activation dynamique',sets:'5 min',muscles:'Mobilité globale',desc:'Leg swings AV/AR 10×/côté · Hip circles 8×/côté · Arm circles + shoulder rolls 10× · Inchworm 5 rép · Squat gobelet léger 10 rép (haltère 8 kg).',charge:'',coude:''},
+    ]},
+    { titre:'Bloc 1 — Traction verticale · 12 min', exs:[
+      {name:'Lat pulldown',sets:'4 × 10–12',muscles:'Grand dorsal · Biceps · Trapèzes inférieurs',desc:'Prise légèrement plus large que les épaules. Tire la barre vers le haut de la poitrine — jamais derrière la nuque. Coudes descendent vers les hanches. Récupération 60–75s.',charge:'Départ : 25–30 kg · +2,5 kg si 12 rép propres sur 4 séries',coude:'Grip large ou prise neutre (poignée triangulaire). Stop immédiat si tension sur l\'épicondyle.'},
+      {name:'Rowing câble assis',sets:'3 × 12',muscles:'Grand dorsal · Rhomboïdes · Trapèzes moyens',desc:'Poignée en V (grip neutre obligatoire). Tire vers le nombril, coudes rasent les flancs. Dos droit — aucun balancement. Pause 1s en position contractée. Récupération 60–75s.',charge:'Départ : 20–25 kg · +2,5 kg toutes les 2 semaines',coude:'Grip neutre uniquement. Stop si douleur au coude.'},
+    ]},
+    { titre:'Bloc 2 — Épaules · 23 min', exs:[
+      {name:'Développé épaules haltères assis',sets:'3 × 10–12',muscles:'Deltoïdes antérieurs et moyens · Triceps supérieurs',desc:'Banc réglable à 90°. Monte jusqu\'à 80% de l\'extension — ne jamais verrouiller. Descends lentement (3 secondes). Récupération 60–75s.',charge:'Départ : 8–10 kg/haltère · +2 kg toutes les 2 semaines',coude:'Amplitude limitée à 80% de l\'extension. Réduire la charge si inconfort.'},
+      {name:'Élévations latérales haltères',sets:'3 × 15',muscles:'Deltoïde moyen',desc:'Légère flexion du coude (15–20°), élève jusqu\'à hauteur des épaules. En haut, pouce légèrement vers le bas : meilleure activation du deltoïde moyen. Récupération 45–60s.',charge:'Départ : 5–6 kg · +1 kg toutes les 3 semaines',coude:'Mouvement sans contrainte épicondylaire. Grip léger.'},
+      {name:'Face pull câble',sets:'3 × 15',muscles:'Rotateurs externes · Rhomboïdes · Deltoïde postérieur',desc:'Corde à hauteur des yeux. Tire vers le visage en ouvrant les coudes vers l\'extérieur et le haut. Bénéfique pour l\'épicondylite — renforce les antagonistes. Récupération 45–60s.',charge:'Départ : 10–12 kg · +2,5 kg toutes les 2 semaines',coude:'Favorable à la rééducation. Grip détendu sur la corde.'},
+    ]},
+    { titre:'Finisher core · 9 min · 3 tours', exs:[
+      {name:'Planche avant tenue',sets:'3 × 40s / 15s transition',muscles:'Core profond · Serratus · Stabilisateurs',desc:'Sur avant-bras. Corps en ligne droite tête–talons. Pousse activement les coudes contre le sol.',charge:'Poids de corps',coude:''},
+      {name:'Dead bug',sets:'3 × 40s / 15s transition',muscles:'Transverse · Core profond · Anti-extension',desc:'Allongé sur le dos, bras tendus vers le plafond, jambes à 90°. Descends bras droit + jambe gauche simultanément sans que le bas du dos décolle.',charge:'Poids de corps',coude:''},
+      {name:'Pallof press câble',sets:'3 × 40s / côté / 15s transition',muscles:'Anti-rotation · Obliques · Transverse',desc:'Câble à hauteur de poitrine, corps perpendiculaire. Tiens la poignée devant toi bras tendus et résiste à la rotation. 40s côté droit, 40s côté gauche.',charge:'Départ : 8–10 kg · grip neutre',coude:'Grip neutre. Charge légère.'},
+    ]},
+    { titre:'Retour au calme · 8 min', exs:[
+      {name:'Étirements upper body ciblés',sets:'8 min',muscles:'',desc:'Doorway pec stretch 45s · Thread the needle 45s/côté · Child\'s pose 45s · Neck lateral 30s/côté · Cohérence cardiaque 5-5 pendant 2 min.',charge:'',coude:''},
+    ]},
+  ]
+};
+
+const SALLE_B = {
+  chrono:[
+    {label:'Échauffement',min:8,bg:'#e8f1fb',fg:'#0c4478'},
+    {label:'Bloc 1 · Lower body',min:18,bg:'#ba7517',fg:'#fff'},
+    {label:'Bloc 2 · Chaîne post.',min:17,bg:'#e24b4a',fg:'#fff'},
+    {label:'Core 3 tours',min:9,bg:'#1d9e75',fg:'#fff'},
+    {label:'Étirements',min:8,bg:'#e1f5ee',fg:'#085041'},
+  ],
+  blocs:[
+    { titre:'Échauffement · 8 min', exs:[
+      {name:'Vélo doux',sets:'3 min',muscles:'Activation cardiovasculaire progressive',desc:'Intensité 3/10. Les jambes s\'activent progressivement avant l\'effort lourd.',charge:'',coude:''},
+      {name:'Activation dynamique lower body',sets:'5 min',muscles:'Mobilité hanches · genoux · chevilles',desc:'Leg swings AV/AR 10×/côté · Hip circles 8×/côté · Fentes statiques légères 5×/côté · Squat gobelet léger 10 rép (haltère 8 kg) · Activation fessière en quadrupédie 10×/côté.',charge:'',coude:''},
+    ]},
+    { titre:'Bloc 1 — Lower body · 18 min', exs:[
+      {name:'Presse à jambes',sets:'4 × 10–12',muscles:'Quadriceps · Fessiers · Ischios',desc:'Pieds à largeur de hanches, légèrement ouverts (15°). Descends jusqu\'à 90° de flexion. Pousse avec les talons. Ne verrouille jamais les genoux en position haute. Récupération 90s.',charge:'Départ : 40–50 kg · +5 kg toutes les 2 semaines',coude:'Zéro contrainte coude.'},
+      {name:'Fentes marchées haltères',sets:'3 × 10 / jambe',muscles:'Quadriceps · Fessiers · Ischios · Stabilisateurs',desc:'Pas suffisamment large, descends le genou arrière à 2–3 cm du sol. Genou avant ne dépasse pas la pointe du pied. Récupération 60–75s.',charge:'Départ : 10–12 kg/haltère · +2 kg toutes les 2 semaines',coude:'Grip détendu. Surveiller si tension épicondyle.'},
+      {name:'Leg curl machine (couché)',sets:'3 × 12',muscles:'Ischios-jambiers',desc:'Allongé face contre la machine, fléchis les genoux en ramenant les talons vers les fesses. Descente contrôlée — 3 secondes minimum. Récupération 60–75s.',charge:'Départ : 15–20 kg · +2,5 kg toutes les 2 semaines',coude:'Zéro contrainte coude.'},
+    ]},
+    { titre:'Bloc 2 — Chaîne postérieure haute · 17 min', exs:[
+      {name:'Hip thrust barre (ou machine)',sets:'3 × 12',muscles:'Grand fessier · Ischios · Lombaires bas',desc:'Épaules posées sur un banc, barre sur les hanches avec pad de protection (obligatoire). Monte le bassin jusqu\'à alignement hanches–genoux–épaules. Squeeze fessier 1s. Récupération 90s.',charge:'Départ : barre seule 20 kg · +5 kg toutes les 2 semaines',coude:'Zéro contrainte coude.'},
+      {name:'Back extension machine',sets:'3 × 12',muscles:'Érecteurs du rachis · Grand fessier',desc:'Extension lombaire contrôlée — arrête à l\'horizontale, jamais en hyperextension. Mouvement lent dans les deux sens. Récupération 60s.',charge:'Poids de corps 4 sem., puis +5 kg/2 semaines',coude:'Zéro contrainte coude.'},
+      {name:'Hip abduction machine',sets:'3 × 15',muscles:'Fessier moyen · TFL · Stabilisateurs genou',desc:'Assis, écarte les jambes contre la résistance. Mouvement lent et contrôlé dans les deux sens. Récupération 60s.',charge:'Départ : 30–40 kg · +5 kg toutes les 2 semaines',coude:'Zéro contrainte coude.'},
+    ]},
+    { titre:'Finisher core · 9 min · 3 tours', exs:[
+      {name:'Planche avant tenue',sets:'3 × 40s / 15s transition',muscles:'Core profond · Serratus',desc:'Identique à la Séance A.',charge:'Poids de corps',coude:''},
+      {name:'Dead bug',sets:'3 × 40s / 15s transition',muscles:'Transverse · Core profond',desc:'Identique à la Séance A.',charge:'Poids de corps',coude:''},
+      {name:'Pallof press câble',sets:'3 × 40s / côté / 15s transition',muscles:'Anti-rotation · Obliques',desc:'Identique à la Séance A.',charge:'Départ : 8–10 kg · grip neutre',coude:'Grip neutre.'},
+    ]},
+    { titre:'Retour au calme · 8 min', exs:[
+      {name:'Étirements lower body ciblés',sets:'8 min',muscles:'',desc:'Hip flexor lunge 45s/côté · Pigeon modifié 45s/côté · Figure 4 allongée 45s/côté · Cat-cow 8 cycles lents.',charge:'',coude:''},
+    ]},
+  ]
+};
+
+const SALLE_C = {
+  chrono:[
+    {label:'Échauffement',min:5,bg:'#e8f1fb',fg:'#0c4478'},
+    {label:'Cardio structuré',min:18,bg:'#639922',fg:'#fff'},
+    {label:'Circuit 3 tours',min:20,bg:'#7f77dd',fg:'#fff'},
+    {label:'Core 3 tours',min:9,bg:'#1d9e75',fg:'#fff'},
+    {label:'Étirements',min:8,bg:'#e1f5ee',fg:'#085041'},
+  ],
+  blocs:[
+    { titre:'Échauffement léger · 5 min', exs:[
+      {name:'Mobilisation dynamique',sets:'5 min',muscles:'',desc:'Leg swings AV/AR · Hip circles · Arm circles · Shoulder rolls.',charge:'',coude:''},
+    ]},
+    { titre:'Bloc 1 — Cardio structuré · 18 min', exs:[
+      {name:'Vélo couché (priorité absolue) ou elliptique',sets:'18 min',muscles:'Cardio · Full body léger',desc:'Vélo couché = premier choix : zéro contrainte coude. Elliptique = second choix : tenir les poignées de façon détendue.\n\nStructure : 3 min échauffement (4/10) → 10 min fractionné (40s effort 7/10 / 20s récup 3/10) → 5 min retour progressif.',charge:'',coude:'RAMEUR EXCLU — traction dynamique répétée sous charge = aggravation directe de l\'épicondylite latérale. Vélo couché ou elliptique uniquement.'},
+    ]},
+    { titre:'Bloc 2 — Circuit fonctionnel · 20 min · 3 tours', exs:[
+      {name:'TRX row ou anneau de gymnastique',sets:'3 × 40s',muscles:'Grand dorsal · Biceps · Core stabilisateur',desc:'Traction horizontale en poids de corps. L\'angle de ton corps règle l\'intensité. Si indisponible : rowing câble léger 15 kg, grip neutre.',charge:'Poids de corps',coude:'TRX : grip neutre. Si câble : grip neutre, charge légère uniquement.'},
+      {name:'Goblet squat kettlebell',sets:'3 × 40s',muscles:'Quadriceps · Fessiers · Core',desc:'Kettlebell tenu contre la poitrine. Talon bien ancré au sol, descente lente (3s), genou pousse vers l\'extérieur dans la direction du pied.',charge:'Départ : 16–20 kg · +4 kg toutes les 2 semaines',coude:'Kettlebell tenu contre la poitrine = zéro contrainte coude.'},
+      {name:'Pompes pieds surélevés sur banc',sets:'3 × 40s',muscles:'Deltoïdes antérieurs · Haut pectoraux · Triceps',desc:'Pieds posés sur un banc, mains au sol, corps incliné. Coudes à 45° du corps.',charge:'Poids de corps',coude:'Stop si douleur à l\'extension du coude.'},
+      {name:'Mountain climbers',sets:'3 × 40s',muscles:'Core · Cardio explosif · Épaules stabilisatrices',desc:'Position pompe sur les mains. Ramène les genoux alternativement vers la poitrine à cadence soutenue. Hanches basses et stables.',charge:'Poids de corps',coude:'Surveillance position poignets — neutre obligatoire.'},
+    ]},
+    { titre:'Finisher core · 9 min · 3 tours', exs:[
+      {name:'Planche avant tenue',sets:'3 × 40s / 15s transition',muscles:'Core profond · Serratus',desc:'Identique aux Séances A et B.',charge:'Poids de corps',coude:''},
+      {name:'Dead bug',sets:'3 × 40s / 15s transition',muscles:'Transverse · Core profond',desc:'Identique aux Séances A et B.',charge:'Poids de corps',coude:''},
+      {name:'Pallof press câble',sets:'3 × 40s / côté / 15s transition',muscles:'Anti-rotation · Obliques',desc:'Identique aux Séances A et B.',charge:'Départ : 8–10 kg · grip neutre',coude:'Grip neutre.'},
+    ]},
+    { titre:'Retour au calme · 8 min', exs:[
+      {name:'Étirements mixtes + respiration',sets:'8 min',muscles:'',desc:'Child\'s pose 45s · Hip flexor lunge 45s/côté · Doorway pec stretch 45s · Cohérence cardiaque 5-5 pendant 2 min.',charge:'',coude:''},
+    ]},
+  ]
+};
+
+const SALLE_CHARGES = [
+  {name:'Lat pulldown',depart:'25–30 kg',prog:'+2,5 kg',critere:'12 rép propres sur 4 séries'},
+  {name:'Rowing câble',depart:'20–25 kg',prog:'+2,5 kg',critere:'/2 semaines'},
+  {name:'Dév. épaules haltères',depart:'8–10 kg/h',prog:'+2 kg',critere:'/2 semaines'},
+  {name:'Élévations latérales',depart:'5–6 kg',prog:'+1 kg',critere:'/3 semaines'},
+  {name:'Face pull câble',depart:'10–12 kg',prog:'+2,5 kg',critere:'/2 semaines'},
+  {name:'Presse à jambes',depart:'40–50 kg',prog:'+5 kg',critere:'/2 semaines'},
+  {name:'Fentes haltères',depart:'10–12 kg/h',prog:'+2 kg',critere:'/2 semaines'},
+  {name:'Leg curl machine',depart:'15–20 kg',prog:'+2,5 kg',critere:'/2 semaines'},
+  {name:'Hip thrust barre',depart:'20 kg (barre)',prog:'+5 kg',critere:'/2 semaines'},
+  {name:'Back extension',depart:'poids de corps',prog:'+5 kg',critere:'après 4 sem.'},
+  {name:'Hip abduction',depart:'30–40 kg',prog:'+5 kg',critere:'/2 semaines'},
+  {name:'Goblet squat KB',depart:'16–20 kg',prog:'+4 kg',critere:'/2 semaines'},
+  {name:'Pallof press',depart:'8–10 kg',prog:'+2,5 kg',critere:'/2 semaines'},
+];
+
+const SALLE_TK_EXERCISES = [
+  'Lat pulldown','Rowing câble','Dév. épaules','Élévations latérales','Face pull',
+  'Presse à jambes','Fentes haltères','Leg curl','Hip thrust','Back extension',
+  'Hip abduction','Goblet squat KB','TRX row','Pompes surélevées','Planche','Dead bug','Pallof press'
+];
+
+function salleSelectDay(el,day){
+  document.querySelectorAll('#page-salle .day-sel').forEach(d=>d.classList.remove('sel-active'));
+  el.classList.add('sel-active');
+  const s=SALLE_SEANCES_MAP[day];
+  document.getElementById('salle-seance-result').style.display='block';
+  document.getElementById('salle-seance-content').style.display='block';
+  const typeClass=s.type==='B'?'badge-B':s.type==='C'?'badge-C':'badge-A';
+  document.getElementById('salle-seance-badge-wrap').innerHTML=`<span class="seance-badge ${typeClass}">⬤ ${s.label}</span>`;
+  document.getElementById('salle-seance-rationale').textContent=s.rationale;
+  const data=s.type==='B'?SALLE_B:s.type==='C'?SALLE_C:SALLE_A;
+  salleRenderChrono(data.chrono);
+  salleRenderExercices(data.blocs);
+}
+
+function salleRenderChrono(chrono){
+  let t=0;
+  document.getElementById('salle-chrono-bar').innerHTML=chrono.map(s=>
+    `<div class="chrono-seg" style="flex:${s.min};background:${s.bg};color:${s.fg};">${s.label} ${s.min}min</div>`
+  ).join('');
+  document.getElementById('salle-chrono-rows').innerHTML=chrono.map(s=>{
+    const st=t; t+=s.min;
+    return `<div class="row"><span class="rt">${st}–${t} min</span><span class="rc">${s.label}</span></div>`;
+  }).join('');
+}
+
+function salleRenderExercices(blocs){
+  document.getElementById('salle-exercices-content').innerHTML=blocs.map(bloc=>`
+    <div class="card">
+      <div class="ch"><span class="ct">${bloc.titre}</span></div>
+      <div class="cb">
+        <div class="ex-list">
+          ${bloc.exs.map(ex=>`
+            <div class="ex-card">
+              <div class="ex-head">
+                <span class="ex-name">${ex.name}</span>
+                <span class="ex-sets">${ex.sets}</span>
+              </div>
+              ${ex.muscles?`<div class="ex-muscles">${ex.muscles}</div>`:''}
+              <div class="ex-desc">${ex.desc.replace(/\n/g,'<br>')}</div>
+              ${ex.charge?`<span class="ex-charge">📊 ${ex.charge}</span>`:''}
+              ${ex.coude?`<span class="${ex.coude.startsWith('RAMEUR')?'ex-interdit':'ex-coude'}">⚡ ${ex.coude}</span>`:''}
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function salleRenderTracker(){
+  const data=salleLoadData();
+  const tr=data.tracker||{};
+  document.getElementById('salle-tk-rows').innerHTML=SALLE_TK_EXERCISES.map(ex=>{
+    const d=tr[ex]||{s1:'',s2:'',s3:''};
+    const best=salleComputeBest([d.s1,d.s2,d.s3]);
+    return `<div class="tk-row">
+      <div><div class="tk-name">${ex}</div></div>
+      <input class="tk-input" id="stk_${ex}_s1" value="${d.s1||''}" placeholder="—" onchange="salleAutoSaveTracker()">
+      <input class="tk-input" id="stk_${ex}_s2" value="${d.s2||''}" placeholder="—" onchange="salleAutoSaveTracker()">
+      <input class="tk-input" id="stk_${ex}_s3" value="${d.s3||''}" placeholder="—" onchange="salleAutoSaveTracker()">
+      <div class="tk-best" id="stk_best_${ex}">${best}</div>
+    </div>`;
+  }).join('');
+}
+
+function salleComputeBest(vals){
+  let best=0,bestStr='—';
+  vals.forEach(v=>{
+    if(!v) return;
+    const m=v.match(/^(\d+(?:\.\d+)?)(?:×(\d+))?/);
+    if(m){
+      const score=(parseFloat(m[1])||0)*(parseInt(m[2])||1);
+      if(score>best){best=score;bestStr=v;}
+    }
+  });
+  return bestStr;
+}
+
+function salleAutoSaveTracker(){ salleSaveTracker(true); }
+
+function salleSaveTracker(silent){
+  const data=salleLoadData();
+  const tr={};
+  SALLE_TK_EXERCISES.forEach(ex=>{
+    tr[ex]={
+      s1:(document.getElementById(`stk_${ex}_s1`)||{}).value||'',
+      s2:(document.getElementById(`stk_${ex}_s2`)||{}).value||'',
+      s3:(document.getElementById(`stk_${ex}_s3`)||{}).value||'',
+    };
+    const best=salleComputeBest([tr[ex].s1,tr[ex].s2,tr[ex].s3]);
+    const el=document.getElementById(`stk_best_${ex}`);
+    if(el) el.textContent=best;
+  });
+  data.tracker=tr;
+  if(!silent) salleSaveData(data);
+  else{ try{ localStorage.setItem(SALLE_KEY,JSON.stringify(data)); }catch(e){} }
+}
+
+function salleClearTracker(){
+  if(!confirm('Effacer tout l\'historique de progression ?')) return;
+  const data=salleLoadData();
+  data.tracker={};
+  salleSaveData(data);
+  salleRenderTracker();
+}
+
+let salleTimerTotal=60,salleTimerLeft=60,salleTimerRunning=false,salleTimerInterval=null,salleAudioCtx=null;
+
+function salleSetRest(secs,btn){
+  salleTimerTotal=secs; salleTimerLeft=secs;
+  salleResetTimer();
+  document.querySelectorAll('.rest-btn').forEach(b=>b.classList.remove('rb-active'));
+  btn.classList.add('rb-active');
+}
+
+function salleFmt(s){ return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0'); }
+
+function salleStartTimer(){
+  if(salleTimerLeft<=0) salleTimerLeft=salleTimerTotal;
+  salleTimerRunning=true;
+  document.getElementById('salle-btn-start').style.display='none';
+  document.getElementById('salle-btn-pause').style.display='';
+  document.getElementById('salle-btn-reset').style.display='';
+  salleTimerInterval=setInterval(()=>{
+    salleTimerLeft--;
+    document.getElementById('salle-timer-display').textContent=salleFmt(salleTimerLeft);
+    if(salleTimerLeft<=0){
+      clearInterval(salleTimerInterval);
+      salleTimerRunning=false;
+      salleBeep();
+      document.getElementById('salle-timer-display').textContent='GO !';
+      setTimeout(()=>{
+        salleTimerLeft=salleTimerTotal;
+        document.getElementById('salle-timer-display').textContent=salleFmt(salleTimerLeft);
+        document.getElementById('salle-btn-start').style.display='';
+        document.getElementById('salle-btn-pause').style.display='none';
+        document.getElementById('salle-btn-reset').style.display='none';
+      },1500);
+    }
+  },1000);
+}
+
+function sallePauseTimer(){
+  clearInterval(salleTimerInterval);
+  salleTimerRunning=false;
+  document.getElementById('salle-btn-pause').style.display='none';
+  document.getElementById('salle-btn-start').textContent='Reprendre';
+  document.getElementById('salle-btn-start').style.display='';
+}
+
+function salleResetTimer(){
+  clearInterval(salleTimerInterval);
+  salleTimerRunning=false;
+  salleTimerLeft=salleTimerTotal;
+  const el=document.getElementById('salle-timer-display');
+  if(el) el.textContent=salleFmt(salleTimerLeft);
+  const bs=document.getElementById('salle-btn-start');
+  if(bs){ bs.textContent='Démarrer'; bs.style.display=''; }
+  const bp=document.getElementById('salle-btn-pause');
+  if(bp) bp.style.display='none';
+  const br=document.getElementById('salle-btn-reset');
+  if(br) br.style.display='none';
+}
+
+function salleBeep(){
+  try{
+    if(!salleAudioCtx) salleAudioCtx=new(window.AudioContext||window.webkitAudioContext)();
+    [440,550,660].forEach((f,i)=>{
+      const o=salleAudioCtx.createOscillator(),g=salleAudioCtx.createGain();
+      o.connect(g); g.connect(salleAudioCtx.destination);
+      o.frequency.value=f; o.type='sine';
+      g.gain.setValueAtTime(.15,salleAudioCtx.currentTime+i*.15);
+      g.gain.exponentialRampToValueAtTime(.001,salleAudioCtx.currentTime+i*.15+.2);
+      o.start(salleAudioCtx.currentTime+i*.15);
+      o.stop(salleAudioCtx.currentTime+i*.15+.2);
+    });
+  }catch(e){}
+}
+
+function salleRenderCharges(){
+  const el=document.getElementById('salle-charges-table');
+  if(!el) return;
+  el.innerHTML=SALLE_CHARGES.map((c,i)=>`
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;border-bottom:${i<SALLE_CHARGES.length-1?'1px solid var(--border)':'none'};">
+      <div style="padding:7px 12px;font-size:12px;font-weight:500;">${c.name}</div>
+      <div style="padding:7px 12px;font-size:11px;font-family:'DM Mono',monospace;">${c.depart}</div>
+      <div style="padding:7px 12px;font-size:11px;font-family:'DM Mono',monospace;color:var(--green-mid);">${c.prog}</div>
+      <div style="padding:7px 12px;font-size:11px;color:var(--muted);">${c.critere}</div>
+    </div>
+  `).join('');
+}
 </script>
 </body>
 </html>
