@@ -955,12 +955,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
         <p class="page-sub">Rotation 5 jours · Routine matinale fixe · Salle bonus variable · eTRF 7h–16h · Tennis elbow · Progression 8 semaines</p>
       </div>
       <div class="nav">
-    <button class="nb active" onclick="show('p_rotation')">Rotation 5j</button>
-    <button class="nb" onclick="show('p_matin')">Routine matinale</button>
-    <button class="nb" onclick="show('p_salle')">Salle (bonus)</button>
-    <button class="nb" onclick="show('p_nutri')">Nutrition eTRF</button>
-    <button class="nb" onclick="show('p_elbow')">Tennis elbow</button>
-    <button class="nb" onclick="show('p_prog')">Progression 8 sem.</button>
+    <button class="nb active" onclick="show('p_rotation', this)">Rotation 5j</button>
+    <button class="nb" onclick="show('p_matin', this)">Routine matinale</button>
+    <button class="nb" onclick="show('p_salle', this)">Salle (bonus)</button>
+    <button class="nb" onclick="show('p_nutri', this)">Nutrition eTRF</button>
+    <button class="nb" onclick="show('p_elbow', this)">Tennis elbow</button>
+    <button class="nb" onclick="show('p_prog', this)">Progression 8 sem.</button>
   </div>
 
   <!-- ROTATION 5J -->
@@ -1375,11 +1375,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 <div class="container">
 
   <div class="nav">
-    <button class="nav-btn active" onclick="showDay('r_lun')">Lun — Push</button>
-    <button class="nav-btn" onclick="showDay('r_mar')">Mar — Hinge/Pull</button>
-    <button class="nav-btn" onclick="showDay('r_mer')">Mer — Mobilité</button>
-    <button class="nav-btn" onclick="showDay('r_jeu')">Jeu — Squat/Core</button>
-    <button class="nav-btn" onclick="showDay('r_ven')">Ven — Full body</button>
+    <button class="nav-btn active" onclick="showDay('r_lun', this)">Lun — Push</button>
+    <button class="nav-btn" onclick="showDay('r_mar', this)">Mar — Hinge/Pull</button>
+    <button class="nav-btn" onclick="showDay('r_mer', this)">Mer — Mobilité</button>
+    <button class="nav-btn" onclick="showDay('r_jeu', this)">Jeu — Squat/Core</button>
+    <button class="nav-btn" onclick="showDay('r_ven', this)">Ven — Full body</button>
   </div>
 
   <!-- LUNDI -->
@@ -1821,12 +1821,12 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
         <p class="page-sub">Instructions détaillées, erreurs fréquentes et signaux d'alerte pour chaque exercice du programme.</p>
       </div>
       <div class="nav">
-    <button class="nb active" onclick="show('e_stretch')">Étirements</button>
-    <button class="nb" onclick="show('e_lun')">J1 · Push</button>
-    <button class="nb" onclick="show('e_mar')">J2 · Hinge/Pull</button>
-    <button class="nb" onclick="show('e_mer')">J3 · Mobilité</button>
-    <button class="nb" onclick="show('e_jeu')">J4 · Squat/Core</button>
-    <button class="nb" onclick="show('e_ven')">J5 · Full body</button>
+    <button class="nb active" onclick="show('e_stretch', this)">Étirements</button>
+    <button class="nb" onclick="show('e_lun', this)">J1 · Push</button>
+    <button class="nb" onclick="show('e_mar', this)">J2 · Hinge/Pull</button>
+    <button class="nb" onclick="show('e_mer', this)">J3 · Mobilité</button>
+    <button class="nb" onclick="show('e_jeu', this)">J4 · Squat/Core</button>
+    <button class="nb" onclick="show('e_ven', this)">J5 · Full body</button>
   </div>
 
   <!-- ===== ÉTIREMENTS ===== -->
@@ -3169,11 +3169,11 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
         <p class="page-sub">Analyse basée sur les études cliniques · Adapté pour 49 ans, reprise sportive, eTRF matin, inflammation, tendons</p>
       </div>
       <div class="nav">
-    <button class="nb active" onclick="show('n_bases')">Bases alimentaires</button>
-    <button class="nb" onclick="show('n_timing')">Timing &amp; repas</button>
-    <button class="nb" onclick="show('n_inflam')">Anti-inflammation</button>
-    <button class="nb" onclick="show('n_compl')">Compléments — oui</button>
-    <button class="nb" onclick="show('n_non')">Compléments — non</button>
+    <button class="nb active" onclick="show('n_bases', this)">Bases alimentaires</button>
+    <button class="nb" onclick="show('n_timing', this)">Timing &amp; repas</button>
+    <button class="nb" onclick="show('n_inflam', this)">Anti-inflammation</button>
+    <button class="nb" onclick="show('n_compl', this)">Compléments — oui</button>
+    <button class="nb" onclick="show('n_non', this)">Compléments — non</button>
   </div>
 
   <div class="legend">
@@ -4989,8 +4989,8 @@ function goTo(pageId) {
 
 // ── TABS INSIDE EACH PAGE (namespaced) ──
 // Plan définitif
-function show(id) {
-  const page = document.getElementById('page-' + id.split('_')[0].replace('p','plan').replace('n','nutrition').replace('e','exercices').replace('r','rotation')) || document.activeElement.closest('.page');
+function show(id, btn) {
+  const page = document.getElementById('page-' + id.split('_')[0].replace('p','plan').replace('n','nutrition').replace('e','exercices').replace('r','rotation')) || (btn && btn.closest('.page'));
   const allSecs = page ? page.querySelectorAll('.sec') : document.querySelectorAll('.sec');
   const allBtns = page ? page.querySelectorAll('.nb') : document.querySelectorAll('.nb');
   allSecs.forEach(s => {
@@ -5001,11 +5001,11 @@ function show(id) {
   });
   const target = document.getElementById(id);
   if (target) target.classList.add('active');
-  if (event && event.currentTarget) event.currentTarget.classList.add('active');
+  if (btn) btn.classList.add('active');
 }
 
 // Rotation 5j
-function showDay(id) {
+function showDay(id, btn) {
   const target = document.getElementById(id);
   if (!target) return;
   const page = target.closest('.page');
@@ -5014,7 +5014,7 @@ function showDay(id) {
     page.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
   }
   target.classList.add('active');
-  if (event && event.currentTarget) event.currentTarget.classList.add('active');
+  if (btn) btn.classList.add('active');
 }
 
 // ── MOBILE SIDEBAR ──
