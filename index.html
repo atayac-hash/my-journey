@@ -699,6 +699,92 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   .mx-head-row,.mx-data-row{grid-template-columns:50px 1fr;}
   .mx-head-row .mx-cell:last-child,.mx-data-row .mx-cell:last-child{display:none;}
 }
+
+/* ══════════════════════════════
+   TABATA TIMER — scoped under #tb-app
+══════════════════════════════ */
+#tb-app{position:relative;z-index:1;max-width:420px;margin:0 auto;min-height:calc(100vh - 100px);display:flex;flex-direction:column;}
+#tb-app .tb-screen{display:none;flex-direction:column;flex:1;}
+#tb-app .tb-screen.active{display:flex;}
+#tb-screen-home{padding:1.5rem 1.5rem 2rem;justify-content:space-between;}
+#tb-app .home-header{margin-bottom:1.5rem;}
+#tb-app .home-label{font-size:11px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;}
+#tb-app .home-title{font-family:'Bebas Neue',sans-serif;font-size:48px;line-height:.9;color:var(--text);letter-spacing:.01em;}
+#tb-app .home-sub{font-size:13px;color:var(--muted);margin-top:10px;line-height:1.6;}
+#tb-app .settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1.5rem;}
+#tb-app .setting-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:10px 12px;display:flex;flex-direction:column;gap:4px;}
+#tb-app .setting-label{font-size:10px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;}
+#tb-app .setting-row{display:flex;align-items:center;gap:6px;}
+#tb-app .setting-val{font-family:'Bebas Neue',sans-serif;font-size:28px;color:var(--accent);line-height:1;min-width:40px;}
+#tb-app .setting-unit{font-size:11px;color:var(--hint);}
+#tb-app .adj-btn{background:var(--surface2);border:1px solid var(--border);color:var(--text);border-radius:5px;width:26px;height:26px;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;flex-shrink:0;transition:background .1s;}
+#tb-app .adj-btn:hover{background:var(--hint);}
+#tb-app .total-bar{background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:10px 14px;display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;}
+#tb-app .total-label{font-size:12px;color:var(--muted);}
+#tb-app .total-val{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--accent);letter-spacing:.03em;}
+#tb-app .tb-ex-title{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;}
+#tb-app .tb-ex-list{display:flex;flex-direction:column;gap:5px;margin-bottom:1.5rem;}
+#tb-app .tb-ex-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:9px 12px;display:flex;align-items:center;gap:10px;}
+#tb-app .tb-ex-num{font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--hint);width:20px;flex-shrink:0;}
+#tb-app .tb-ex-info{flex:1;}
+#tb-app .tb-ex-name{font-size:13px;font-weight:600;color:var(--text);}
+#tb-app .tb-ex-muscles{font-size:11px;color:var(--muted);}
+#tb-app .tb-ex-mod{font-size:10px;color:var(--accent2);background:rgba(232,124,62,.1);border-radius:3px;padding:2px 6px;white-space:nowrap;}
+#tb-app .start-btn{width:100%;background:var(--accent);color:var(--bg);border:none;border-radius:var(--r);padding:16px;font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.08em;cursor:pointer;transition:opacity .15s,transform .1s;flex-shrink:0;}
+#tb-app .start-btn:hover{opacity:.9;}
+#tb-app .start-btn:active{transform:scale(.98);}
+#tb-screen-active{padding:0;justify-content:space-between;}
+#tb-app .top-bar{padding:1rem 1.25rem .75rem;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);flex-shrink:0;}
+#tb-app .top-left{display:flex;flex-direction:column;}
+#tb-app .tb-phase-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);}
+#tb-app .tb-phase-name{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.04em;transition:color .3s;}
+#tb-app .top-right{text-align:right;}
+#tb-app .tb-cycle-label{font-size:10px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em;}
+#tb-app .tb-cycle-val{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--accent);letter-spacing:.03em;}
+#tb-app .timer-main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1rem;position:relative;}
+#tb-app .arc-wrap{position:relative;width:240px;height:240px;margin-bottom:1.5rem;}
+#tb-app .arc-svg{transform:rotate(-90deg);}
+#tb-app .arc-bg{fill:none;stroke:var(--surface2);stroke-width:10;}
+#tb-app .arc-prog{fill:none;stroke-width:10;stroke-linecap:round;transition:stroke-dashoffset .4s linear,stroke .3s;}
+#tb-app .arc-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+#tb-app .timer-count{font-family:'Bebas Neue',sans-serif;font-size:80px;color:var(--text);line-height:1;letter-spacing:-.01em;transition:color .3s;}
+#tb-app .timer-count.urgent{color:var(--red);}
+#tb-app .timer-sub{font-size:12px;color:var(--muted);margin-top:2px;}
+#tb-app .ex-display{text-align:center;padding:0 1rem;min-height:70px;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+#tb-app .ex-display-num{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:3px;}
+#tb-app .ex-display-name{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--text);letter-spacing:.04em;line-height:1.1;transition:opacity .2s;}
+#tb-app .ex-display-muscles{font-size:12px;color:var(--muted);margin-top:3px;}
+#tb-app .ex-display-mod{font-size:11px;color:var(--accent2);margin-top:4px;}
+#tb-app .next-up{font-size:11px;color:var(--hint);margin-top:10px;}
+#tb-app .next-up span{color:var(--muted);}
+#tb-app .dots-row{display:flex;gap:6px;justify-content:center;margin-top:.75rem;flex-wrap:wrap;padding:0 1rem;}
+#tb-app .dot{width:8px;height:8px;border-radius:50%;background:var(--hint);transition:background .2s,transform .15s;}
+#tb-app .dot.done{background:var(--green);}
+#tb-app .dot.current{background:var(--accent);transform:scale(1.3);}
+#tb-app .tb-controls{padding:1rem 1.25rem 1.5rem;display:flex;gap:10px;flex-shrink:0;border-top:1px solid var(--border);}
+#tb-app .ctrl-btn{flex:1;padding:14px;border-radius:var(--rs);border:1px solid var(--border);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all .12s;}
+#tb-app .ctrl-btn.pause{background:var(--accent);color:var(--bg);border-color:var(--accent);}
+#tb-app .ctrl-btn.pause:hover{opacity:.85;}
+#tb-app .ctrl-btn.stop{background:var(--surface);color:var(--muted);}
+#tb-app .ctrl-btn.stop:hover{background:var(--red);color:#fff;border-color:var(--red);}
+#tb-app .ctrl-btn.skip{background:var(--surface2);color:var(--text);}
+#tb-app .global-bar{height:3px;background:var(--surface2);flex-shrink:0;position:relative;}
+#tb-app .global-fill{height:100%;background:var(--accent);transition:width .5s linear;}
+#tb-screen-done{padding:2rem 1.5rem 2.5rem;align-items:center;justify-content:center;text-align:center;}
+#tb-app .done-icon{font-size:56px;margin-bottom:1rem;}
+#tb-app .done-title{font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--accent);letter-spacing:.04em;margin-bottom:6px;}
+#tb-app .done-sub{font-size:14px;color:var(--muted);margin-bottom:2rem;line-height:1.6;}
+#tb-app .done-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;width:100%;margin-bottom:2rem;}
+#tb-app .done-stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--rs);padding:12px 8px;}
+#tb-app .done-stat-val{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--accent);letter-spacing:.02em;display:block;}
+#tb-app .done-stat-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;}
+#tb-app .again-btn{width:100%;background:var(--accent);color:var(--bg);border:none;border-radius:var(--r);padding:16px;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.08em;cursor:pointer;}
+#tb-app .tb-phase-work{color:var(--accent)!important;}
+#tb-app .tb-phase-rest{color:var(--blue)!important;}
+#tb-app .tb-phase-cycle-rest{color:var(--accent2)!important;}
+#tb-app .tb-phase-prepare{color:var(--muted)!important;}
+#tb-app .tb-phase-cooldown{color:var(--green)!important;}
+@media(max-width:400px){#tb-app .home-title{font-size:40px;}#tb-app .timer-count{font-size:68px;}#tb-app .arc-wrap{width:200px;height:200px;}}
 </style>
 </head>
 <body>
@@ -3281,11 +3367,151 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 
     <!-- PAGE : TABATA TIMER -->
     <div id="page-tabata" class="page">
-      <div class="page-header">
-        <h1 class="page-title">Tabata Timer</h1>
-        <p class="page-sub">Timer configurable · 7 exercices · Cycles ajustables · J5 Full Body</p>
+      <div id="tb-app">
+
+        <!-- SCREEN HOME -->
+        <div id="tb-screen-home" class="tb-screen active">
+          <div>
+            <div class="home-header">
+              <div class="home-label">My Journey · J5</div>
+              <div class="home-title">TABATA<br>FULL BODY</div>
+              <div class="home-sub">Calisthenics · Vendredi matin · 5h50–6h10</div>
+            </div>
+            <div class="settings-grid">
+              <div class="setting-card">
+                <div class="setting-label">Préparation</div>
+                <div class="setting-row">
+                  <button class="adj-btn" onclick="tbAdj('prepare',-5)">−</button>
+                  <div class="setting-val" id="tb-val-prepare">10</div>
+                  <div class="setting-unit">s</div>
+                  <button class="adj-btn" onclick="tbAdj('prepare',5)">+</button>
+                </div>
+              </div>
+              <div class="setting-card">
+                <div class="setting-label">Exercices (rounds)</div>
+                <div class="setting-row">
+                  <div class="setting-val" id="tb-val-rounds">7</div>
+                  <div class="setting-unit">exos</div>
+                </div>
+              </div>
+              <div class="setting-card">
+                <div class="setting-label">Travail</div>
+                <div class="setting-row">
+                  <button class="adj-btn" onclick="tbAdj('work',-5)">−</button>
+                  <div class="setting-val" id="tb-val-work">30</div>
+                  <div class="setting-unit">s</div>
+                  <button class="adj-btn" onclick="tbAdj('work',5)">+</button>
+                </div>
+              </div>
+              <div class="setting-card">
+                <div class="setting-label">Repos inter-exo</div>
+                <div class="setting-row">
+                  <button class="adj-btn" onclick="tbAdj('rest',-5)">−</button>
+                  <div class="setting-val" id="tb-val-rest">5</div>
+                  <div class="setting-unit">s</div>
+                  <button class="adj-btn" onclick="tbAdj('rest',5)">+</button>
+                </div>
+              </div>
+              <div class="setting-card">
+                <div class="setting-label">Cycles</div>
+                <div class="setting-row">
+                  <button class="adj-btn" onclick="tbAdj('cycles',-1)">−</button>
+                  <div class="setting-val" id="tb-val-cycles">4</div>
+                  <div class="setting-unit">×</div>
+                  <button class="adj-btn" onclick="tbAdj('cycles',1)">+</button>
+                </div>
+              </div>
+              <div class="setting-card">
+                <div class="setting-label">Repos inter-cycle</div>
+                <div class="setting-row">
+                  <button class="adj-btn" onclick="tbAdj('cycleRest',-5)">−</button>
+                  <div class="setting-val" id="tb-val-cycleRest">10</div>
+                  <div class="setting-unit">s</div>
+                  <button class="adj-btn" onclick="tbAdj('cycleRest',5)">+</button>
+                </div>
+              </div>
+              <div class="setting-card" style="grid-column:1/-1;">
+                <div class="setting-label">Cooldown final</div>
+                <div class="setting-row">
+                  <button class="adj-btn" onclick="tbAdj('cooldown',-10)">−</button>
+                  <div class="setting-val" id="tb-val-cooldown">30</div>
+                  <div class="setting-unit">s</div>
+                  <button class="adj-btn" onclick="tbAdj('cooldown',10)">+</button>
+                </div>
+              </div>
+            </div>
+            <div class="total-bar">
+              <span class="total-label">Durée totale</span>
+              <span class="total-val" id="tb-total-display">17:30</span>
+            </div>
+            <div class="tb-ex-title">Les 7 exercices</div>
+            <div class="tb-ex-list">
+              <div class="tb-ex-item"><div class="tb-ex-num">1</div><div class="tb-ex-info"><div class="tb-ex-name">Seal jack</div><div class="tb-ex-muscles">Cardio · activation · rhomboïdes</div></div></div>
+              <div class="tb-ex-item"><div class="tb-ex-num">2</div><div class="tb-ex-info"><div class="tb-ex-name">Pistol squat assisté</div><div class="tb-ex-muscles">Quadriceps · fessier · équilibre</div></div><div class="tb-ex-mod">Appui cadre de porte</div></div>
+              <div class="tb-ex-item"><div class="tb-ex-num">3</div><div class="tb-ex-info"><div class="tb-ex-name">Archer push-up</div><div class="tb-ex-muscles">Pectoraux · deltoïdes · core anti-rotation</div></div></div>
+              <div class="tb-ex-item"><div class="tb-ex-num">4</div><div class="tb-ex-info"><div class="tb-ex-name">Spiderman crawl</div><div class="tb-ex-muscles">Core · épaules · mobilité de hanche</div></div></div>
+              <div class="tb-ex-item"><div class="tb-ex-num">5</div><div class="tb-ex-info"><div class="tb-ex-name">Split squat bulgare</div><div class="tb-ex-muscles">Quadriceps · grand fessier · stabilisateurs</div></div><div class="tb-ex-mod">15s par côté</div></div>
+              <div class="tb-ex-item"><div class="tb-ex-num">6</div><div class="tb-ex-info"><div class="tb-ex-name">Hollow body rock</div><div class="tb-ex-muscles">Core profond · transverse · anti-extension</div></div><div class="tb-ex-mod">Genoux si lombaires décollent</div></div>
+              <div class="tb-ex-item"><div class="tb-ex-num">7</div><div class="tb-ex-info"><div class="tb-ex-name">Tuck jump</div><div class="tb-ex-muscles">Full body explosif · pic cardio · finisher</div></div><div class="tb-ex-mod">Réception souple obligatoire</div></div>
+            </div>
+          </div>
+          <button class="start-btn" onclick="tbStartSession()">DÉMARRER LA SÉANCE</button>
+        </div>
+
+        <!-- SCREEN ACTIVE -->
+        <div id="tb-screen-active" class="tb-screen">
+          <div class="global-bar"><div class="global-fill" id="tb-global-fill" style="width:0%"></div></div>
+          <div class="top-bar">
+            <div class="top-left">
+              <span class="tb-phase-label">Phase</span>
+              <span class="tb-phase-name" id="tb-phase-name">Préparation</span>
+            </div>
+            <div class="top-right">
+              <div class="tb-cycle-label">Cycle</div>
+              <div class="tb-cycle-val" id="tb-cycle-val">1 / 4</div>
+            </div>
+          </div>
+          <div class="timer-main">
+            <div class="arc-wrap">
+              <svg class="arc-svg" width="240" height="240" viewBox="0 0 240 240">
+                <circle class="arc-bg" cx="120" cy="120" r="108"/>
+                <circle class="arc-prog" id="tb-arc-prog" cx="120" cy="120" r="108" stroke="#e8c547" stroke-dasharray="678.6" stroke-dashoffset="678.6"/>
+              </svg>
+              <div class="arc-inner">
+                <div class="timer-count" id="tb-timer-count">10</div>
+                <div class="timer-sub" id="tb-timer-sub">secondes</div>
+              </div>
+            </div>
+            <div class="ex-display">
+              <div class="ex-display-num" id="tb-ex-display-num"></div>
+              <div class="ex-display-name" id="tb-ex-display-name">Prêt ?</div>
+              <div class="ex-display-muscles" id="tb-ex-display-muscles"></div>
+              <div class="ex-display-mod" id="tb-ex-display-mod"></div>
+              <div class="next-up" id="tb-next-up"></div>
+            </div>
+            <div class="dots-row" id="tb-dots-row"></div>
+          </div>
+          <div class="tb-controls">
+            <button class="ctrl-btn pause" id="tb-btn-pause" onclick="tbTogglePause()">PAUSE</button>
+            <button class="ctrl-btn skip" onclick="tbSkipPhase()">→ SKIP</button>
+            <button class="ctrl-btn stop" onclick="tbStopSession()">STOP</button>
+          </div>
+        </div>
+
+        <!-- SCREEN DONE -->
+        <div id="tb-screen-done" class="tb-screen">
+          <div class="done-icon">🔥</div>
+          <div class="done-title">SÉANCE<br>TERMINÉE</div>
+          <div class="done-sub" id="tb-done-sub">Full body · 4 cycles · 28 séries</div>
+          <div class="done-stats">
+            <div class="done-stat"><span class="done-stat-val" id="tb-done-cycles">4</span><span class="done-stat-label">Cycles</span></div>
+            <div class="done-stat"><span class="done-stat-val" id="tb-done-series">28</span><span class="done-stat-label">Séries</span></div>
+            <div class="done-stat"><span class="done-stat-val" id="tb-done-time">17:30</span><span class="done-stat-label">Durée</span></div>
+          </div>
+          <button class="again-btn" onclick="tbResetToHome()">RECOMMENCER</button>
+        </div>
+
       </div>
-      <iframe src="tabata_j5.html" style="width:100%;height:calc(100vh - 120px);border:none;border-radius:var(--rs);background:transparent;" title="Tabata Timer J5"></iframe>
     </div>
 
     <!-- PAGE : NUTRITION -->
@@ -6122,6 +6348,214 @@ function salleRenderCharges(){
     </div>
   `).join('');
 }
+
+// ═══════════════════════════════════════════════
+// TABATA TIMER
+// ═══════════════════════════════════════════════
+(function() {
+const TB_EXERCISES = [
+  { name:'Seal jack',           muscles:'Cardio · activation · rhomboïdes',            mod:'' },
+  { name:'Pistol squat assisté',muscles:'Quadriceps · fessier · équilibre',            mod:'Appui cadre de porte' },
+  { name:'Archer push-up',      muscles:'Pectoraux · deltoïdes · core anti-rotation',  mod:'' },
+  { name:'Spiderman crawl',     muscles:'Core · épaules · mobilité de hanche',         mod:'' },
+  { name:'Split squat bulgare', muscles:'Quadriceps · grand fessier · stabilisateurs', mod:'15s par côté' },
+  { name:'Hollow body rock',    muscles:'Core profond · transverse · anti-extension',  mod:'Genoux si lombaires décollent' },
+  { name:'Tuck jump',           muscles:'Full body explosif · pic cardio · finisher',  mod:'Réception souple obligatoire' },
+];
+
+const tbCfg = { prepare:10, work:30, rest:5, cycles:4, cycleRest:10, cooldown:30 };
+const TB_MINS = { prepare:5, work:10, rest:0, cycles:1, cycleRest:0, cooldown:10 };
+const TB_MAXS = { prepare:30, work:60, rest:30, cycles:8, cycleRest:60, cooldown:120 };
+
+let tbTimeline=[], tbTotalDur=0, tbStepIdx=0, tbStepLeft=0, tbPaused=false, tbInterval=null, tbAudioCtx=null, tbCompletedSeries=0, tbStartTime=null;
+
+window.tbAdj = function(key, delta) {
+  tbCfg[key] = Math.max(TB_MINS[key], Math.min(TB_MAXS[key], tbCfg[key] + delta));
+  document.getElementById('tb-val-'+key).textContent = tbCfg[key];
+  tbUpdateTotal();
+};
+
+function tbCalcTotal() {
+  const r = TB_EXERCISES.length;
+  const perCycle = r * tbCfg.work + (r-1) * tbCfg.rest;
+  return tbCfg.prepare + tbCfg.cycles * perCycle + (tbCfg.cycles-1) * tbCfg.cycleRest + tbCfg.cooldown;
+}
+
+function tbFmt(s) { return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0'); }
+
+function tbUpdateTotal() { document.getElementById('tb-total-display').textContent = tbFmt(tbCalcTotal()); }
+
+function tbBuildTimeline() {
+  const t=[], r=TB_EXERCISES.length;
+  t.push({type:'prepare',dur:tbCfg.prepare,exIdx:-1});
+  for(let c=0;c<tbCfg.cycles;c++){
+    for(let i=0;i<r;i++){
+      t.push({type:'work',dur:tbCfg.work,exIdx:i,cycle:c});
+      if(i<r-1) t.push({type:'rest',dur:tbCfg.rest,exIdx:i,nextExIdx:i+1,cycle:c});
+    }
+    if(c<tbCfg.cycles-1) t.push({type:'cycle-rest',dur:tbCfg.cycleRest,cycle:c});
+  }
+  t.push({type:'cooldown',dur:tbCfg.cooldown,exIdx:-1});
+  return t;
+}
+
+window.tbStartSession = function() {
+  tbTimeline=tbBuildTimeline(); tbTotalDur=tbCalcTotal();
+  tbStepIdx=0; tbCompletedSeries=0; tbStartTime=Date.now(); tbPaused=false;
+  tbShowScreen('tb-screen-active');
+  tbBuildDots(); tbLoadStep(); tbRunTick();
+};
+
+window.tbStopSession = function() {
+  if(confirm('Arrêter la séance ?')){ clearInterval(tbInterval); tbShowScreen('tb-screen-home'); }
+};
+
+window.tbResetToHome = function() { tbShowScreen('tb-screen-home'); };
+
+function tbRunTick() {
+  clearInterval(tbInterval);
+  tbInterval = setInterval(()=>{
+    if(tbPaused) return;
+    tbStepLeft--;
+    tbUpdateArc(); tbUpdateCount(); tbUpdateGlobal();
+    if(tbStepLeft<=3 && tbStepLeft>0) tbBeepTick();
+    if(tbStepLeft<=0) tbAdvanceStep();
+  },1000);
+}
+
+function tbAdvanceStep() {
+  const cur=tbTimeline[tbStepIdx];
+  if(cur.type==='work'){ tbCompletedSeries++; tbBeepEnd(); }
+  tbStepIdx++;
+  if(tbStepIdx>=tbTimeline.length){ tbFinish(); return; }
+  tbLoadStep();
+}
+
+window.tbSkipPhase = function() {
+  const cur=tbTimeline[tbStepIdx];
+  if(cur.type==='work') tbCompletedSeries++;
+  tbStepIdx++;
+  if(tbStepIdx>=tbTimeline.length){ tbFinish(); return; }
+  tbLoadStep();
+};
+
+function tbLoadStep() {
+  const step=tbTimeline[tbStepIdx];
+  tbStepLeft=step.dur;
+  const phaseEl=document.getElementById('tb-phase-name');
+  const arcEl=document.getElementById('tb-arc-prog');
+  const PHASES={
+    prepare:{name:'Préparation',cls:'tb-phase-prepare',color:'#3a3832'},
+    work:   {name:'TRAVAIL',    cls:'tb-phase-work',   color:'#e8c547'},
+    rest:   {name:'Repos',      cls:'tb-phase-rest',   color:'#4e9be8'},
+    'cycle-rest':{name:'Repos cycle',cls:'tb-phase-cycle-rest',color:'#e87c3e'},
+    cooldown:{name:'Cooldown',  cls:'tb-phase-cooldown',color:'#4ecb71'},
+  };
+  const p=PHASES[step.type];
+  phaseEl.className='tb-phase-name '+p.cls;
+  phaseEl.textContent=p.name;
+  arcEl.style.stroke=p.color;
+  if(step.type==='work') tbBeepStart();
+  const cycle=step.cycle!==undefined?step.cycle+1:(step.type==='cooldown'?tbCfg.cycles:1);
+  document.getElementById('tb-cycle-val').textContent=cycle+' / '+tbCfg.cycles;
+  tbUpdateExDisplay(step);
+  tbUpdateDots(step);
+  arcEl.style.strokeDasharray='678.6';
+  tbUpdateArc(); tbUpdateCount();
+}
+
+function tbUpdateExDisplay(step) {
+  const nameEl=document.getElementById('tb-ex-display-name');
+  const numEl=document.getElementById('tb-ex-display-num');
+  const musclesEl=document.getElementById('tb-ex-display-muscles');
+  const modEl=document.getElementById('tb-ex-display-mod');
+  const nextEl=document.getElementById('tb-next-up');
+  if(step.type==='work'){
+    const ex=TB_EXERCISES[step.exIdx];
+    numEl.textContent='Exercice '+(step.exIdx+1)+' / '+TB_EXERCISES.length;
+    nameEl.textContent=ex.name; musclesEl.textContent=ex.muscles; modEl.textContent=ex.mod;
+    const nx=step.exIdx<TB_EXERCISES.length-1?step.exIdx+1:null;
+    nextEl.innerHTML=nx!==null?'Suivant : <span>'+TB_EXERCISES[nx].name+'</span>':'Suivant : <span>Repos cycle</span>';
+  } else if(step.type==='rest'){
+    numEl.textContent=''; nameEl.textContent='Repos'; musclesEl.textContent=''; modEl.textContent='';
+    if(step.nextExIdx!==undefined) nextEl.innerHTML='Suivant : <span>'+TB_EXERCISES[step.nextExIdx].name+'</span>';
+  } else if(step.type==='cycle-rest'){
+    numEl.textContent='Cycle '+(step.cycle+1)+' terminé'; nameEl.textContent='Repos';
+    musclesEl.textContent='Reprends ton souffle'; modEl.textContent='';
+    nextEl.innerHTML='Suivant : <span>Cycle '+(step.cycle+2)+'</span>';
+  } else if(step.type==='prepare'){
+    numEl.textContent=''; nameEl.textContent='Prêt ?';
+    musclesEl.textContent=tbCfg.cycles+' cycles · '+TB_EXERCISES.length+' exercices · '+tbFmt(tbCalcTotal());
+    modEl.textContent=''; nextEl.innerHTML='Premier exo : <span>'+TB_EXERCISES[0].name+'</span>';
+  } else if(step.type==='cooldown'){
+    numEl.textContent='Séance terminée'; nameEl.textContent='Cooldown';
+    musclesEl.textContent='Respiration lente · récupération'; modEl.textContent=''; nextEl.textContent='';
+  }
+}
+
+function tbUpdateArc() {
+  const step=tbTimeline[tbStepIdx]; if(!step) return;
+  const prog=Math.max(0,tbStepLeft/step.dur);
+  document.getElementById('tb-arc-prog').style.strokeDashoffset=678.6*(1-prog);
+}
+
+function tbUpdateCount() {
+  const el=document.getElementById('tb-timer-count');
+  el.textContent=tbStepLeft;
+  el.classList.toggle('urgent',tbStepLeft<=3&&tbTimeline[tbStepIdx]?.type==='work');
+}
+
+function tbBuildDots() {
+  document.getElementById('tb-dots-row').innerHTML=TB_EXERCISES.map((_,i)=>`<div class="dot" id="tb-dot-${i}"></div>`).join('');
+}
+
+function tbUpdateDots(step) {
+  TB_EXERCISES.forEach((_,i)=>{
+    const el=document.getElementById('tb-dot-'+i); if(!el) return;
+    el.className='dot';
+    if(step.type==='work'&&step.exIdx===i) el.classList.add('current');
+    else if((step.type==='rest'||step.type==='work')&&step.exIdx>i) el.classList.add('done');
+    else if(step.type==='rest'&&step.exIdx===i) el.classList.add('done');
+  });
+}
+
+function tbUpdateGlobal() {
+  const elapsed=tbTimeline.slice(0,tbStepIdx).reduce((a,s)=>a+s.dur,0)+(tbTimeline[tbStepIdx]?.dur-tbStepLeft||0);
+  document.getElementById('tb-global-fill').style.width=Math.min(100,(elapsed/tbTotalDur)*100)+'%';
+}
+
+window.tbTogglePause = function() {
+  tbPaused=!tbPaused;
+  document.getElementById('tb-btn-pause').textContent=tbPaused?'REPRENDRE':'PAUSE';
+};
+
+function tbFinish() {
+  clearInterval(tbInterval);
+  const elapsed=Math.round((Date.now()-tbStartTime)/1000);
+  document.getElementById('tb-done-cycles').textContent=tbCfg.cycles;
+  document.getElementById('tb-done-series').textContent=tbCompletedSeries;
+  document.getElementById('tb-done-time').textContent=tbFmt(elapsed);
+  document.getElementById('tb-done-sub').textContent='Full body · '+tbCfg.cycles+' cycles · '+tbCompletedSeries+' séries';
+  tbShowScreen('tb-screen-done');
+  tbBeepFinish();
+}
+
+function tbShowScreen(id) {
+  document.querySelectorAll('#tb-app .tb-screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+// Audio
+function tbGetAudio(){ if(!tbAudioCtx) tbAudioCtx=new(window.AudioContext||window.webkitAudioContext)(); return tbAudioCtx; }
+function tbTone(freq,dur,vol,delay){ try{ const ctx=tbGetAudio(),o=ctx.createOscillator(),g=ctx.createGain(); o.connect(g);g.connect(ctx.destination); o.frequency.value=freq;o.type='sine'; const t=ctx.currentTime+(delay||0); g.gain.setValueAtTime(vol||.1,t);g.gain.exponentialRampToValueAtTime(.001,t+dur); o.start(t);o.stop(t+dur); }catch(e){} }
+function tbBeepStart(){ tbTone(660,.12,.15); }
+function tbBeepEnd(){ tbTone(440,.15,.1);tbTone(550,.15,.1,.15); }
+function tbBeepTick(){ tbTone(880,.05,.06); }
+function tbBeepFinish(){ [440,550,660,880].forEach((f,i)=>tbTone(f,.2,.12,i*.18)); }
+
+// Init
+document.addEventListener('DOMContentLoaded', tbUpdateTotal);
+})();
 </script>
 </body>
 </html>
