@@ -4,6 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Personal Growth — Arno</title>
+
+<!-- ═══════════════════════════════════════════════
+     CONFIGURATION
+     Webhook_URL: 21/06/2026
+═══════════════════════════════════════════════ -->
+<script>
+const CONFIG = {
+  SHEET_ID:      "1Aa4G9LOfxvyEAxGwsYYO7PiJDz9nk3HDZyYxNLbG4fk",
+  API_KEY:       "AIzaSyDwEevYIkEXrNd0C4cA0f_qd4tW9FrERgk",
+  WEBHOOK_URL:   "https://script.google.com/macros/s/AKfycbwOyMUJoOMjigP7JKOjIqJcNDwLCrab-Abj9IBTx7noXmEqtcuxFGRzYcPRdLYTbXoM/exec",
+};
+</script>
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap');
 :root {
@@ -5846,9 +5859,32 @@ function rsGoTo(id, btn) {
   if (btn) btn.classList.add('active');
 }
 
-const RS_KEY = 'pg_soir_v1';
-function rsLoad() { try { return JSON.parse(localStorage.getItem(RS_KEY)) || {}; } catch(e) { return {}; } }
-function rsSave(data) { try { localStorage.setItem(RS_KEY, JSON.stringify(data)); rsShowSaved(); } catch(e) {} }
+const RS_KEY = 'pg_soir_v1'; // devient la clé dans le Sheet, plus une clé localStorage
+
+async function rsLoad() {
+  try {
+    const url = `https://sheets.googleapis.com/v4/spreadsheets/${MJ_CONFIG.SHEET_ID}/values/Storage?key=${MJ_CONFIG.API_KEY}`;
+    const r = await fetch(url);
+    const d = await r.json();
+    const rows = (d.values || []).slice(1); // ignore la ligne d'en-tête
+    const row = rows.find(row => row[0] === RS_KEY);
+    return row ? JSON.parse(row[1]) : {};
+  } catch(e) {
+    console.error('rsLoad:', e.message);
+    return {};
+  }
+}
+
+function rsSave(data) {
+  // Fire-and-forget, même logique que ecrire() dans Job Search :
+  // Content-Type text/plain pour éviter le preflight CORS
+  fetch(MJ_CONFIG.WEBHOOK_URL, {
+    method:  "POST",
+    headers: {"Content-Type": "text/plain"},
+    body:    JSON.stringify({ key: RS_KEY, value: JSON.stringify(data) })
+  }).catch(e => console.error('rsSave webhook:', e.message));
+  rsShowSaved();
+}
 function rsShowSaved() {
   const el = document.getElementById('rs-saveIndicator');
   if (!el) return;
@@ -5857,12 +5893,13 @@ function rsShowSaved() {
 }
 
 function rsSaveDump() {
-  const data = rsLoad();
-  data.dump = {
-    tasks:    document.getElementById('rs-dump-tasks').value,
-    thoughts: document.getElementById('rs-dump-thoughts').value,
-    day:      document.getElementById('rs-dump-day').value,
-    date:     new Date().toISOString()
+  const data = {
+    dump: {
+      tasks:    document.getElementById('rs-dump-tasks').value,
+      thoughts: document.getElementById('rs-dump-thoughts').value,
+      day:      document.getElementById('rs-dump-day').value,
+      date:     new Date().toISOString()
+    }
   };
   rsSave(data);
 }
@@ -5942,8 +5979,8 @@ function rsResetBreath() {
   document.getElementById('rs-breath-info').textContent = '4 cycles · ~2 minutes · dans le lit, lumière éteinte';
 }
 
-function rsRestoreAll() {
-  const data = rsLoad();
+async function rsRestoreAll() {
+  const data = await rsLoad();
   if (data.dump) {
     if (data.dump.tasks)    document.getElementById('rs-dump-tasks').value    = data.dump.tasks;
     if (data.dump.thoughts) document.getElementById('rs-dump-thoughts').value = data.dump.thoughts;
