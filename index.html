@@ -5393,9 +5393,15 @@ var LN_BAR_COLORS = {pro:'#7F77DD',geo:'#1D9E75',per:'#BA7517',rom:'#D4537E'};
 
 var lnEntries = [];
 var lnStatuses = {};
-try { lnEntries  = JSON.parse(localStorage.getItem('rl_notes_v2')  || '[]'); } catch(e){}
-try { lnStatuses = JSON.parse(localStorage.getItem('rl_status_v2') || '{}'); } catch(e){}
 var lnCurrentTag = 'pro';
+
+async function lnRestoreAll() {
+  lnEntries  = (await mjStorageGet('rl_notes_v2'))  || [];
+  lnStatuses = (await mjStorageGet('rl_status_v2')) || {};
+  renderJournalLN();
+  renderProgLN();
+}
+document.addEventListener('DOMContentLoaded', lnRestoreAll);
 
 function showLN(name) {
   var page = document.getElementById('page-notes-lecture');
@@ -5425,7 +5431,7 @@ function saveLN() {
   var act  = document.getElementById('ln-f-act').value.trim();
   if (!idee && !src) return;
   lnEntries.unshift({type:'hebdo', sem:sem, src:src, cat:lnCurrentTag, idee:idee, lien:lien, act:act, date:new Date().toLocaleDateString('fr-FR')});
-  try { localStorage.setItem('rl_notes_v2', JSON.stringify(lnEntries)); } catch(e){}
+  mjStorageSet('rl_notes_v2', lnEntries);
   document.getElementById('ln-f-sem').value  = '';
   document.getElementById('ln-f-src').value  = '';
   document.getElementById('ln-f-idee').value = '';
@@ -5443,7 +5449,7 @@ function saveSynthese() {
   var ajout = document.getElementById('ln-syn-ajout').value.trim();
   if (!mois && !livre && !idee) return;
   lnEntries.unshift({type:'synthese', mois:mois, livre:livre, idee_syn:idee, axe:axe, ajout:ajout, date:new Date().toLocaleDateString('fr-FR')});
-  try { localStorage.setItem('rl_notes_v2', JSON.stringify(lnEntries)); } catch(e){}
+  mjStorageSet('rl_notes_v2', lnEntries);
   document.getElementById('ln-syn-mois').value  = '';
   document.getElementById('ln-syn-livre').value = '';
   document.getElementById('ln-syn-idee').value  = '';
@@ -5478,14 +5484,14 @@ function saveEditLN(i) {
     e.lien = document.getElementById('ln-ed-lien').value.trim();
     e.act  = document.getElementById('ln-ed-act').value.trim();
   }
-  try { localStorage.setItem('rl_notes_v2', JSON.stringify(lnEntries)); } catch(e2){}
+  mjStorageSet('rl_notes_v2', lnEntries);
   lnEditingIdx = -1;
   renderJournalLN();
 }
 function deleteEntryLN(i) {
   if (!confirm('Supprimer cette entrée ?')) return;
   lnEntries.splice(i, 1);
-  try { localStorage.setItem('rl_notes_v2', JSON.stringify(lnEntries)); } catch(e){}
+  mjStorageSet('rl_notes_v2', lnEntries);
   lnEditingIdx = -1;
   renderJournalLN();
 }
@@ -5582,13 +5588,9 @@ function renderProgLN() {
 
 function setStLN(name, val) {
   lnStatuses[name] = val;
-  try { localStorage.setItem('rl_status_v2', JSON.stringify(lnStatuses)); } catch(e){}
+  mjStorageSet('rl_status_v2', lnStatuses);
   renderProgLN();
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById('ln-cnt').textContent = lnEntries.length;
-});
 
 // ── BREATHWORK ──
 function bwGoTo(id, btn) {
@@ -5705,10 +5707,34 @@ function bwResetTimer() {
   document.getElementById('bw-resetBtn').style.display = 'none';
 }
 
+// ── MJ STORAGE — helpers génériques (clé/valeur, utilisés par tous les modules) ──
+async function mjStorageGet(key) {
+  try {
+    const url = `https://sheets.googleapis.com/v4/spreadsheets/${MJ_CONFIG.SHEET_ID}/values/Storage?key=${MJ_CONFIG.API_KEY}`;
+    const r = await fetch(url);
+    const d = await r.json();
+    const rows = (d.values || []).slice(1); // ignore la ligne d'en-tête
+    const row = rows.find(row => row[0] === key);
+    return row ? JSON.parse(row[1]) : null;
+  } catch(e) {
+    console.error('mjStorageGet:', key, e.message);
+    return null;
+  }
+}
+
+function mjStorageSet(key, value) {
+  // Fire-and-forget : Content-Type text/plain pour éviter le preflight CORS
+  fetch(MJ_CONFIG.WEBHOOK_URL, {
+    method:  "POST",
+    headers: {"Content-Type": "text/plain"},
+    body:    JSON.stringify({ key, value: JSON.stringify(value) })
+  }).catch(e => console.error('mjStorageSet:', key, e.message));
+}
+
 // ── LEADERSHIP ──
 const LD_KEY = 'pg_leadership_v1';
-function ldLoad() { try { return JSON.parse(localStorage.getItem(LD_KEY)) || {}; } catch(e) { return {}; } }
-function ldSave(data) { try { localStorage.setItem(LD_KEY, JSON.stringify(data)); } catch(e) {} ldShowSaved(); }
+async function ldLoad() { return (await mjStorageGet(LD_KEY)) || {}; }
+function ldSave(data) { mjStorageSet(LD_KEY, data); ldShowSaved(); }
 function ldShowSaved() {
   const el = document.getElementById('ld-save-indicator');
   if (!el) return;
@@ -5729,10 +5755,10 @@ function ldShowPhase(btn, id) {
   btn.classList.add('active');
 }
 
-function ldSaveField(fieldId, storageKey) {
+async function ldSaveField(fieldId, storageKey) {
   const el = document.getElementById(fieldId);
   if (!el) return;
-  const data = ldLoad();
+  const data = await ldLoad();
   data[storageKey] = { value: el.value, date: new Date().toISOString() };
   ldSave(data);
 }
@@ -5766,8 +5792,8 @@ function ldRenderTags() {
   if (bc) bc.innerHTML = common.length > 0 ? common.map(t => `<span class="bridge-tag">${t}</span>`).join('') : '<span style="font-size:12px;color:var(--hint);">Les mots communs apparaîtront ici automatiquement</span>';
 }
 
-function ldSaveGap() {
-  const data = ldLoad();
+async function ldSaveGap() {
+  const data = await ldLoad();
   const refl = document.getElementById('ld-gap-reflection');
   data.gap = { self: ldSelfTags, market: ldMarketTags, reflection: refl ? refl.value : '', date: new Date().toISOString() };
   ldSave(data);
@@ -5804,7 +5830,7 @@ function ldDeleteProof(id) {
   ldSaveProofs(); ldRenderProofs();
 }
 
-function ldSaveProofs() { const data = ldLoad(); data.proofs = ldProofs; ldSave(data); }
+async function ldSaveProofs() { const data = await ldLoad(); data.proofs = ldProofs; ldSave(data); }
 
 function ldRenderProofs() {
   const list = document.getElementById('ld-proof-list');
@@ -5828,8 +5854,8 @@ function ldUpdateStats() {
   const s = document.getElementById('ld-stat-streak'); if(s) s.textContent = weeks > 0 ? weeks : 0;
 }
 
-function ldRestoreAll() {
-  const data = ldLoad();
+async function ldRestoreAll() {
+  const data = await ldLoad();
   if (data.gap) {
     ldSelfTags = data.gap.self || []; ldMarketTags = data.gap.market || [];
     const refl = document.getElementById('ld-gap-reflection');
@@ -5859,32 +5885,17 @@ function rsGoTo(id, btn) {
   if (btn) btn.classList.add('active');
 }
 
-const RS_KEY = 'pg_soir_v1'; // devient la clé dans le Sheet, plus une clé localStorage
+const RS_KEY = 'pg_soir_v1';
 
 async function rsLoad() {
-  try {
-    const url = `https://sheets.googleapis.com/v4/spreadsheets/${MJ_CONFIG.SHEET_ID}/values/Storage?key=${MJ_CONFIG.API_KEY}`;
-    const r = await fetch(url);
-    const d = await r.json();
-    const rows = (d.values || []).slice(1); // ignore la ligne d'en-tête
-    const row = rows.find(row => row[0] === RS_KEY);
-    return row ? JSON.parse(row[1]) : {};
-  } catch(e) {
-    console.error('rsLoad:', e.message);
-    return {};
-  }
+  return (await mjStorageGet(RS_KEY)) || {};
 }
 
 function rsSave(data) {
-  // Fire-and-forget, même logique que ecrire() dans Job Search :
-  // Content-Type text/plain pour éviter le preflight CORS
-  fetch(MJ_CONFIG.WEBHOOK_URL, {
-    method:  "POST",
-    headers: {"Content-Type": "text/plain"},
-    body:    JSON.stringify({ key: RS_KEY, value: JSON.stringify(data) })
-  }).catch(e => console.error('rsSave webhook:', e.message));
+  mjStorageSet(RS_KEY, data);
   rsShowSaved();
 }
+
 function rsShowSaved() {
   const el = document.getElementById('rs-saveIndicator');
   if (!el) return;
@@ -6019,8 +6030,8 @@ document.addEventListener('DOMContentLoaded', () => {
 // ═══════════════════ SALLE MODULE ═══════════════════════════
 
 const SALLE_KEY = 'salle_mj_v1';
-function salleLoadData(){ try{ return JSON.parse(localStorage.getItem(SALLE_KEY))||{}; }catch(e){ return {}; } }
-function salleSaveData(d){ try{ localStorage.setItem(SALLE_KEY,JSON.stringify(d)); salleShowSaved(); }catch(e){} }
+async function salleLoadData(){ return (await mjStorageGet(SALLE_KEY)) || {}; }
+function salleSaveData(d){ mjStorageSet(SALLE_KEY, d); salleShowSaved(); }
 function salleShowSaved(){
   const el=document.getElementById('salle-save-ind');
   if(!el) return;
@@ -6215,8 +6226,8 @@ function salleRenderExercices(blocs){
   `).join('');
 }
 
-function salleRenderTracker(){
-  const data=salleLoadData();
+async function salleRenderTracker(){
+  const data=await salleLoadData();
   const tr=data.tracker||{};
   document.getElementById('salle-tk-rows').innerHTML=SALLE_TK_EXERCISES.map(ex=>{
     const d=tr[ex]||{s1:'',s2:'',s3:''};
@@ -6247,7 +6258,6 @@ function salleComputeBest(vals){
 function salleAutoSaveTracker(){ salleSaveTracker(true); }
 
 function salleSaveTracker(silent){
-  const data=salleLoadData();
   const tr={};
   SALLE_TK_EXERCISES.forEach(ex=>{
     tr[ex]={
@@ -6259,16 +6269,14 @@ function salleSaveTracker(silent){
     const el=document.getElementById(`stk_best_${ex}`);
     if(el) el.textContent=best;
   });
-  data.tracker=tr;
+  const data = { tracker: tr };
   if(!silent) salleSaveData(data);
-  else{ try{ localStorage.setItem(SALLE_KEY,JSON.stringify(data)); }catch(e){} }
+  else mjStorageSet(SALLE_KEY, data);
 }
 
 function salleClearTracker(){
   if(!confirm('Effacer tout l\'historique de progression ?')) return;
-  const data=salleLoadData();
-  data.tracker={};
-  salleSaveData(data);
+  salleSaveData({ tracker: {} });
   salleRenderTracker();
 }
 
